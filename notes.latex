@@ -1,0 +1,360 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1.0in]{geometry}
+
+\setlength{\mathindent}{0pt}
+
+\let\oldimplies\implies
+\renewcommand*{\implies}{\Rightarrow}
+\newcommand*{\rmaskip}{\setlength{\abovedisplayskip}{0pt}}
+\newcommand*{\rmbskip}{\setlength{\belowdisplayskip}{0pt}}
+\newcommand*{\rmskip}{\rmaskip \rmbskip}
+\newcommand*{\dd}[3][]{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}
+\newcommand*{\D}[1]{\mathop{}\!\mathrm{d} #1}
+\makeatletter
+\newcommand{\mquote}[1]{{\mathpalette\mqu@te{#1}}}
+\newcommand{\mqu@te}[2]{%
+  \sbox0{\(\m@th#1\text{``}\)}%
+  \sbox1{\(\m@th#1\text{''}\)}%
+  \sbox2{\(\m@th#1#2\)}%
+  \ifdim\ht2>\ht0
+    \raisebox{\dimexpr\ht2-\height}{\box0}%
+    #2%
+    \raisebox{\dimexpr\ht2-\height}{\box1}%
+  \else
+    \box0 #2\box1
+  \fi
+}
+\makeatother
+
+\begin{document}
+\section*{Double Angle Formulas}
+{\rmskip \begin{align*}
+  \sin(2x) &= 2\sin(x)\cos(x)\\
+  \cos(2x) &= \cos^2(x) - \sin^2(x)\\
+    &= 2\cos^2(x) - 1\\
+    &= 1-2\sin^2(x)\\
+  \tan(2x) &= \frac{2\tan(x)}{1 - \tan^2(x)}\\
+  \sin^2(x) &= \frac{1}{2}(1-\cos(2x))\\
+  \cos^2(x) &= \frac{1}{2}(1+\cos(2x))
+\end{align*}}%
+\section*{Limits}
+\[
+  \lim_{x \to c} f(x) = L
+\]
+Means for any number \(\epsilon > 0\) there exists a number \(\delta > 0\) such
+that if \(0 < |x - c| < \delta\) then \(|f(x) - L| < \epsilon\).
+\[
+  \lim_{x \to a}f(g(x)) = f\left(\lim_{x \to a}g(x)\right) \text{ if } f(g(x))
+  \text{ is continuous at } x
+\]
+Standard difference quotient:
+\[
+f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}
+\]
+Symmetric difference quotient:
+\[
+f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x-h)}{2h}
+\]
+\section*{Continuity and Differentiability}
+\(f(x)\) is continuous at \(x\) if:
+\[
+  f(x) = \lim_{k \to x^+}f(k) = \lim_{k \to x^-}f(k)
+\]
+\(f(x)\) is differentiable at \(x\) if:
+\[
+  f'_+(x) = f'_-(x)
+\]
+\section*{Differentiation Rules}
+{\rmskip \begin{align*}
+  \dd{}{x}c f(x) &= c f'(x)\\
+  \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
+  \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
+  \dd{}{x}f(x)^n &= nf(x)^{n-1} \cdot f'(x)\\
+  \dd{}{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
+  \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
+  \dd{}{x}\left(\frac{f(x)}{g(x)}\right) &= \frac{f'(x)g(x) - f(x)g'(x)}
+    {g(x)^2}\\
+  \dd{}{x}|f(x)| &= \frac{|f(x)|}{f(x)} \cdot f'(x)\\
+  \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
+  \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
+\end{align*}}%
+\section*{Trigonometric Differentiation Rules}
+{\rmskip \begin{align*}
+  \dd{}{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
+  \dd{}{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
+  \dd{}{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
+  \dd{}{x}\sec(f(x)) &= \sec(f(x))\tan(f(x)) \cdot f'(x)\\
+  \dd{}{x}\csc(f(x)) &= -\csc(f(x))\cot(f(x)) \cdot f'(x)\\
+  \dd{}{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
+\end{align*}}%
+\section*{Inverse Trigonometric Differentiation Rules}
+{\rmskip \begin{align*}
+  \dd{}{x}\sin^{-1}(f(x)) &= \frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
+  \dd{}{x}\cos^{-1}(f(x)) &= -\frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
+  \dd{}{x}\tan^{-1}(f(x)) &= \frac{f'(x)}{1 + f(x)^2}
+\end{align*}}%
+\section*{Mean Value Theorem}
+If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
+\([a,b]\) such that:
+\[
+  f'(c) = \frac{f(b) - f(a)}{b - a}
+\]
+\section*{Reimann Sums}
+\[
+  \sum_{k=1}^n f(x_k) \Delta x\\
+\]
+Assuming regular partition:
+{\rmbskip \begin{align*}
+  \text{LRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-1)(b - a)}{n}\right)
+    \frac{b-a}{n}\\
+  \text{MRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-0.5)(b - a)}{n}\right)
+    \frac{b-a}{n}\\
+  \text{RRAM} &= \sum_{k=1}^n f\left(a + \frac{k(b - a)}{n}\right)
+    \frac{b-a}{n}
+\end{align*}}%
+\section*{Definite Integration}
+{\rmaskip \begin{align*}
+  \int_a^b f(x) \D{x} &= \lim_{n \to \infty} \sum_{k=1}^n f(x_k)\Delta x\\
+  \int_a^a f(x) \D{x} &= 0\\
+  \int_a^b f(x) \D{x} &= -\int_b^a f(x) \D{x}\\
+  \int_a^b c f(x) \D{x} &= c \int_a^b f(x) \D{x}\\
+  \int_a^b (f(x) \pm g(x)) \D{x} &= \int_a^b f(x) \D{x} \pm \int_a^b g(x)
+    \D{x}\\
+  \int_a^p f(x) \D{x} + \int_p^b f(x) \D{x} &= \int_a^b f(x) \D{x}\\
+  \int_a^b f(x) \D{x} &> \int_a^b g(x) \D{x} \text{ if }f(x) > g(x)
+    \text{ on the interval } [a,b]
+\end{align*}}%
+The mean value of \(f(x)\) over \([a,b]\) is:
+\[
+  \frac{1}{b - a} \int_a^b f(x) \D{x}
+\]
+\section*{Mean Value of a Function Theorem}
+If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
+\([a,b]\) such that:
+\[
+  f(c) = \frac{1}{b - a} \int_a^b f(x) \D{x}
+\]
+\section*{Fundamental Theorem of Calculus}
+Part 1:
+\[
+  \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
+\]
+Part 2:
+{\rmbskip \begin{align*}
+  F'(x) &= f(x)\\
+  \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
+\end{align*}}%
+\section*{Solving Differential Equations Using A Definite Integral}
+{\rmaskip \begin{align*}
+  \dd{y}{x} &= f(x)\\
+  y &= \int_a^x f(t) \D{t} + C
+\end{align*}}%
+The easiest solution occurs when \(a = \) the given \(x\) value and \(C = \)
+the given \(y\) value.
+\section*{Solving Differential Equations With Antidifferentiation}
+{\rmaskip \begin{align*}
+  \dd{y}{x} &= f(x)\\
+  y &= \int f(x) + C \text{ (general form)}
+\end{align*}}%
+Specify largest domain of \(x\) that includes specified \(x\) and does not
+include any discontinuities.
+\section*{Euler's Method}
+Start at \((x_0,y_0)\)
+{\rmbskip \begin{align*}
+  \Delta y &= \Delta x \cdot \dd{x}{y} \biggr|_{(x_{n-1},y_{n-1})} \\
+  (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
+\end{align*}}%
+\section*{Antidifferentiation Rules}
+{\rmskip \begin{align*}
+  \int cf(x) \D{x} &= c \int f(x) \D{x}\\
+  \int f(x) \pm g(x) \D{x} &= \int f(x) \D{x} \pm \int g(x) \D{x}\\
+  \int x^n \D{x} &= \frac{x^{n+1}}{n+1} + C\\
+  \int \frac{1}{x} \D{x} &= \ln|x| + C\\
+  \int b^x \D{x} &= \frac{b^x}{\ln b} + C\\
+  \int \ln x \D{x} &= x\ln x - x + C
+\end{align*}}%
+\section*{Trigonometric Antidifferentiation Rules}
+{\rmskip \begin{align*}
+  \int \sin(x) \D{x} &= -\cos(x) + C\\
+  \int \cos(x) \D{x} &= \sin(x) + C\\
+  \int \tan(x) \D{x} &= -\ln(|cos(x)|) + C\\
+  \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
+  \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
+  \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
+  \int \sec^2(x) \D{x} &= \tan(x) + C\\
+  \int \sec(x) \tan(x) \D{x} &= \sec(x) + C\\
+  \int \frac{1}{1+x^2} \D{x} &= \tan^{-1}(x) + C\\
+  \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \sin^{-1}(x) + C
+\end{align*}}%
+\section*{Inverse Trigonometric Antidifferentiation Rules}
+{\rmskip \begin{align*}
+  \int \sin^{-1}(x) &= x\sin^{-1}(x) + \sqrt{1-x^2}\\
+  \int \tan^{-1}(x) &= x\tan^{-1}(x) - \frac{1}{2} \ln(1 + x^2) + C
+\end{align*}}%
+\section*{U-Substitution}
+To differentiate \(\int f(g(x)) \D{x}\) where \(f(x)\) and \(g(x)\) are both
+antidifferentiable, set \(u = g(x)\). Then solve for \(du\) and replace \(dx\)
+so that the equation \(\int f(u) \D{u}\) results. Antidifferentiate and
+replace \(u\) with \(g(x)\).
+\section*{Integration by Parts}
+\[
+  \int u \D{v} = uv - \int v \D{u} + C
+\]
+or\\
+{\renewcommand{\arraystretch}{1.5}\begin{tabular}{c c}
+  \(u\) & \(\D{v}\)\\
+  \(\dd{u}{x}\) & \(\int \D{v} \D{x}\)\\
+  \(\dd[2]{u}{x}\) & \(\int\left(\int\D{v}\D{x}\right)\D{x}\)\\
+  \(\dd[3]{u}{x}\) & \(\int\left(\int\left(\int\D{v}\D{x}\right)\D{x}
+    \right)\D{x}\)\\
+  \(\cdots\) & \(\cdots\)\\
+  0 & \(\cdots\)
+\end{tabular}}
+\[
+  \int u \D{v} = \left(u \cdot \int \D{v} \D{x}\right) - \left(
+    \dd{u}{x} \cdot \int \left( \int \D{v} \D{x} \right) \D{x}
+    \right) + \left(\dd[2]{u}{x} \cdot \int \left( \int \left( \int \D{v}
+    \D{x} \right) \D{x} \right) \D{x} \right) - \dots
+\]
+\section*{Partial Fraction Decomposition}
+Convert fractions of form \(\frac{\text{linear or constant}}{\text{factorable
+quadratic}}\) into its partial fraction.
+{\rmskip \begin{align*}
+  \frac{h(x)}{f(x)g(x)} &= \frac{A}{f(x)} + \frac{B}{g(x)} = \frac{Ag(x)}
+  {f(x)g(x)} + \frac{Bf(x)}{f(x)g(x)} = \frac{Ag(x) + Bf(x)}{f(x)g(x)}\\
+  h(x) &= Ag(x) + Bf(x)
+\end{align*}}%
+Choose a value of \(x\) such that \(f(x) = 0\) and then \(g(x) = 0\) to solve
+for \(A\) and \(B\) respectively.
+\section*{Exponential Growth/Decay}
+{\rmskip \begin{align*}
+  \dd{Q}{t} &= kQ\\
+  Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
+  k &= -\frac{\ln(b)}{p}
+\end{align*}}%
+\subsection*{Half-life}
+\[
+  k = -\frac{\ln(2)}{p}
+\]
+\section*{Logistic Differential Equation}
+\[
+  \dd{P}{t} = kP(m - P) = kPm\left(1-\frac{P}{m}\right)
+\]
+where \(P\) is the population and \(M\) is the carrying capacity
+\[
+  P(t) = \frac{m}{1 + Ae^{-mkt}}
+\]
+The maximum carrying capacity is reached when \(P(t) = m - 0.5\), if \(P(0) <
+m\), or right after \(P(t) = m + 0.5\), if \(P(0) > m\).
+\section*{Calculating Area of Regions Bounded by Two Functions}
+\[
+  A = \left|\int_a^b f(x) - g(x) \D{x}\right|
+\]
+\section*{Typical Cross-Sectional Areas}
+{\renewcommand{\arraystretch}{1.5}\begin{tabular}{l@{ }l}
+  Square: & \(A = b^2 = \frac{1}{2}d^2\)\\
+  Rectangle: & \(A = bh\)\\
+  Equalateral triangle: & \(A = \frac{\sqrt{3}}{4}b^2\)\\
+  Right isoceles triangle: & \(A = \frac{1}{2}l^2 = \frac{1}{4}h^2\)\\
+  Hexagon: & \(A = \frac{3\sqrt{3}}{2} s^2\)\\
+  Circle: & \(A = \pi r^2 = \frac{1}{4}\pi d^2\)\\
+  Semicircle: & \(A = \frac{1}{2}\pi r^2 = \frac{1}{8}\pi d^2\)\\
+  Parabolic region: & \(A = \frac{2}{3}bh\)
+\end{tabular}}
+\section*{Calculating Volume Using the Disk/Washer Method for Solids of
+Rotation}
+\[
+  V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{t}
+\]
+where \(\D{t}\) is the differential thickness of the disk/washer.
+\section*{Calculating Volume Using the Cylindrical Shell Method for Solids of
+Rotation}
+\[
+  V = 2\pi \int_a^b hr \D{t}
+\]
+where \(\D{t}\) is the differential thickness of the shell.
+\section*{Calculating Arc Lengh}
+\[
+  l = \int_a^b \sqrt{1+\left(\dd{y}{x}\right)^2} \D{x}
+    = \int_c^d \sqrt{1+\left(\dd{x}{y}\right)^2} \D{y}
+\]
+\section*{Sequences}
+\subsection*{Explicit Definition}
+\[
+  x_n = f(n)
+\]
+where \(n \in \{1,2,3,\dots\}\).
+\subsection*{Recursive Definition}
+\[
+  x_n = f(x_{n-1})
+\]
+where \(x_1\) is defined and \(n \in \{2,3,4,\dots\}\).
+\subsection*{Arithmetic}
+{\rmskip \begin{align*}
+  x_n &= d(n-1) + x_1\\
+  x_n &= t_{n-1} + d
+\end{align*}}%
+\subsection*{Geometric}
+{\rmskip \begin{align*}
+  x_n &= x_1r^{n-1}\\
+  x_n &= x_{n-1} r
+\end{align*}}%
+\subsection*{Convergence/Divergence}
+A sequence converges if the limit \(\displaystyle\lim_{n \to \infty} x_n\) is
+a finite number else it diverges.
+\section*{L'H\^{o}pitals Rule}
+In order to evaluate a limit where
+\[
+  \lim_{x \to a} \frac{f(x)}{g(x)} \implies \mquote{\frac{0}{0}} \text{ or }
+  \mquote{\frac{\infty}{\infty}}
+\]
+instead evaluate
+\[
+  \lim_{x \to a} \frac{f'(x)}{g'(x)}
+\]
+In order to evaluate a limit where
+\[
+  \lim_{x \to a} f(x)^{g(x)} \implies \mquote{0^0} \text{ or }
+  \mquote{1^\infty} \text{ or } \mquote{\infty^0}
+\]
+instead evaluate
+\[
+  e^{-\lim_{x \to a} \frac{f'(x)g(x)^2}{f(x)g'(x)}}
+\]
+\section*{Relative Rates of Growth}
+To compare rates of \(f(x)\) and \(g(x)\) evaluate
+\[
+  \lim_{x \to \infty} \frac{f(x)}{g(x)} =
+  \begin{cases}
+    \infty & \text{then \(f(x)\) grows faster than \(g\)}\\
+    0 < i < \infty & \text{then \(f(x)\) and \(g(x)\) grow at the same rate}\\
+    0 & \text{then \(f(x)\) grows slower than \(g(x)\)}
+  \end{cases}
+\]
+\section*{Improper Integrals}
+\subsection*{Type 1}
+{\rmskip \begin{align*}
+  \int_a^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_a^n f(x) \D{x}\\
+  \int_{-\infty}^b f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^b f(x) \D{x}\\
+  \int_{-\infty}^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^n f(x) \D{x}
+\end{align*}}%
+\subsection*{Type 2}
+\[
+  \int_a^b f(x)
+\]
+such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
+\begin{alignat*}{2}
+  &\int_a^b f(x) \D{x} \text{ (where discontinuity at \(a\)) }
+    &= \lim_{n \to a^+} \int_n^b f(x) \D{x}\\
+  &\int_a^b f(x) \D{x} \text{ (where discontinuity at \(b\)) }
+    &= \lim_{n \to b^-} \int_a^n f(x) \D{x}\\
+  &\int_a^b f(x) \D{x} \text{ (where discontinuity on \(\left<a,b\right>\)) }
+    &= \lim_{n \to b^-} \int_a^n f(x) \D{x}
+\end{alignat*}
+\end{document}
