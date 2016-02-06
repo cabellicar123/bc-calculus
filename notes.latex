@@ -3,11 +3,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[fleqn]{amsmath}
-\usepackage{amssymb}
+\usepackage[fleqn]{mathtools}
 \usepackage[margin=1.0in]{geometry}
+\usepackage{titlesec}
 
 \setlength{\mathindent}{0pt}
+
+\titleformat*{\subsection}{\bfseries}
 
 \let\oldimplies\implies
 \renewcommand*{\implies}{\Rightarrow}
@@ -141,11 +143,11 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
   f(c) = \frac{1}{b - a} \int_a^b f(x) \D{x}
 \]
 \section*{Fundamental Theorem of Calculus}
-Part 1:
+\subsection*{Part 1}
 \[
   \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
 \]
-Part 2:
+\subsection*{Part 2}
 {\rmbskip \begin{align*}
   F'(x) &= f(x)\\
   \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
@@ -331,11 +333,11 @@ instead evaluate
 To compare rates of \(f(x)\) and \(g(x)\) evaluate
 \[
   \lim_{x \to \infty} \frac{f(x)}{g(x)} =
-  \begin{cases}
-    \infty & \text{then \(f(x)\) grows faster than \(g\)}\\
-    0 < i < \infty & \text{then \(f(x)\) and \(g(x)\) grow at the same rate}\\
-    0 & \text{then \(f(x)\) grows slower than \(g(x)\)}
-  \end{cases}
+  \begin{dcases*}
+    \infty & then \(f(x)\) grows faster than \(g\)\\
+    0 < i < \infty & then \(f(x)\) and \(g(x)\) grow at the same rate\\
+    0 & then \(f(x)\) grows slower than \(g(x)\)
+  \end{dcases*}
 \]
 \section*{Improper Integrals}
 \subsection*{Type 1}
