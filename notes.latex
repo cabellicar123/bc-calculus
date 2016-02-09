@@ -351,12 +351,23 @@ To compare rates of \(f(x)\) and \(g(x)\) evaluate
   \int_a^b f(x)
 \]
 such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
-\begin{alignat*}{2}
+\begin{alignat*}{3}
   &\int_a^b f(x) \D{x} \text{ (where discontinuity at \(a\)) }
-    &= \lim_{n \to a^+} \int_n^b f(x) \D{x}\\
+    &&= \lim_{n \to a^+} \int_n^b f(x) \D{x}\\
   &\int_a^b f(x) \D{x} \text{ (where discontinuity at \(b\)) }
-    &= \lim_{n \to b^-} \int_a^n f(x) \D{x}\\
-  &\int_a^b f(x) \D{x} \text{ (where discontinuity on \(\left<a,b\right>\)) }
-    &= \lim_{n \to b^-} \int_a^n f(x) \D{x}
+    &&= \lim_{n \to b^-} \int_a^n f(x) \D{x}\\
+  &\int_a^b f(x) \D{x} \text{ (where discontinuity \(d\) on
+    \(\left<a,b\right>\)) } &&= \lim_{n \to d^-} \int_a^n f(x) \D{x} +
+    \lim_{n \to d^+} \int_n^b f(x) \D{x}
 \end{alignat*}
+\section*{Comparison Tests}
+For type 1 improper integrals (\(a = 0\) and/or \(b = 0\)) where the integrand
+is not easily antidifferentiable:
+\[
+  \int_a^b f(x) \D{x}
+\]
+Establish bound functions which can be antidifferentiated:
+\[
+  l(x) < f(x) < u(x)
+\]
 \end{document}
