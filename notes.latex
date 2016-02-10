@@ -361,13 +361,19 @@ such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
     \lim_{n \to d^+} \int_n^b f(x) \D{x}
 \end{alignat*}
 \section*{Comparison Tests}
-For type 1 improper integrals (\(a = 0\) and/or \(b = 0\)) where the integrand
-is not easily antidifferentiable:
+For type 1 improper integrals (\(a = \infty\) and/or \(b = \infty\)) where the
+integrand is not easily antidifferentiable:
 \[
   \int_a^b f(x) \D{x}
 \]
 Establish bound functions which can be antidifferentiated:
 \[
-  l(x) < f(x) < u(x)
+  l(x) \le f(x) \le u(x)
 \]
+{\rmaskip\begin{alignat*}{3}
+  \text{Convergence if } &\int_a^b f(x) \D{x} \le \int_a^b u(x) \D{x}
+    &&\text{ where } \int_a^b u(x) \D{x} \text{ converges}\\
+  \text{Divergence if } &\int_a^b f(x) \D{x} \ge \int_a^b l(x) \D{x}
+    &&\text{ where } \int_a^b l(x) \D{x} \text{ diverges}
+\end{alignat*}}
 \end{document}
