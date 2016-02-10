@@ -57,11 +57,11 @@ that if \(0 < |x - c| < \delta\) then \(|f(x) - L| < \epsilon\).
 \]
 Standard difference quotient:
 \[
-f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}
+  f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}
 \]
 Symmetric difference quotient:
 \[
-f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x-h)}{2h}
+  f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x-h)}{2h}
 \]
 \section*{Continuity and Differentiability}
 \(f(x)\) is continuous at \(x\) if:
