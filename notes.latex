@@ -36,7 +36,7 @@
 
 \begin{document}
 \section*{Double Angle Formulas}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \sin(2x) &= 2\sin(x)\cos(x)\\
   \cos(2x) &= \cos^2(x) - \sin^2(x)\\
     &= 2\cos^2(x) - 1\\
@@ -73,7 +73,7 @@ Symmetric difference quotient:
   f'_+(x) = f'_-(x)
 \]
 \section*{Differentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \dd{}{x}c f(x) &= c f'(x)\\
   \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
   \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
@@ -87,7 +87,7 @@ Symmetric difference quotient:
   \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
 \end{align*}}%
 \section*{Trigonometric Differentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \dd{}{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
   \dd{}{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
   \dd{}{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
@@ -96,7 +96,7 @@ Symmetric difference quotient:
   \dd{}{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
 \end{align*}}%
 \section*{Inverse Trigonometric Differentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \dd{}{x}\sin^{-1}(f(x)) &= \frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
   \dd{}{x}\cos^{-1}(f(x)) &= -\frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
   \dd{}{x}\tan^{-1}(f(x)) &= \frac{f'(x)}{1 + f(x)^2}
@@ -112,7 +112,7 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
   \sum_{k=1}^n f(x_k) \Delta x\\
 \]
 Assuming regular partition:
-{\rmbskip \begin{align*}
+{\rmbskip\begin{align*}
   \text{LRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-1)(b - a)}{n}\right)
     \frac{b-a}{n}\\
   \text{MRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-0.5)(b - a)}{n}\right)
@@ -121,7 +121,7 @@ Assuming regular partition:
     \frac{b-a}{n}
 \end{align*}}%
 \section*{Definite Integration}
-{\rmaskip \begin{align*}
+{\rmaskip\begin{align*}
   \int_a^b f(x) \D{x} &= \lim_{n \to \infty} \sum_{k=1}^n f(x_k)\Delta x\\
   \int_a^a f(x) \D{x} &= 0\\
   \int_a^b f(x) \D{x} &= -\int_b^a f(x) \D{x}\\
@@ -148,19 +148,19 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
   \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
 \]
 \subsection*{Part 2}
-{\rmbskip \begin{align*}
+{\rmbskip\begin{align*}
   F'(x) &= f(x)\\
   \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
 \end{align*}}%
 \section*{Solving Differential Equations Using A Definite Integral}
-{\rmaskip \begin{align*}
+{\rmaskip\begin{align*}
   \dd{y}{x} &= f(x)\\
   y &= \int_a^x f(t) \D{t} + C
 \end{align*}}%
 The easiest solution occurs when \(a = \) the given \(x\) value and \(C = \)
 the given \(y\) value.
 \section*{Solving Differential Equations With Antidifferentiation}
-{\rmaskip \begin{align*}
+{\rmaskip\begin{align*}
   \dd{y}{x} &= f(x)\\
   y &= \int f(x) + C \text{ (general form)}
 \end{align*}}%
@@ -168,12 +168,12 @@ Specify largest domain of \(x\) that includes specified \(x\) and does not
 include any discontinuities.
 \section*{Euler's Method}
 Start at \((x_0,y_0)\)
-{\rmbskip \begin{align*}
+{\rmbskip\begin{align*}
   \Delta y &= \Delta x \cdot \dd{x}{y} \biggr|_{(x_{n-1},y_{n-1})} \\
   (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
 \end{align*}}%
 \section*{Antidifferentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \int cf(x) \D{x} &= c \int f(x) \D{x}\\
   \int f(x) \pm g(x) \D{x} &= \int f(x) \D{x} \pm \int g(x) \D{x}\\
   \int x^n \D{x} &= \frac{x^{n+1}}{n+1} + C\\
@@ -182,7 +182,7 @@ Start at \((x_0,y_0)\)
   \int \ln x \D{x} &= x\ln x - x + C
 \end{align*}}%
 \section*{Trigonometric Antidifferentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \int \sin(x) \D{x} &= -\cos(x) + C\\
   \int \cos(x) \D{x} &= \sin(x) + C\\
   \int \tan(x) \D{x} &= -\ln(|cos(x)|) + C\\
@@ -195,7 +195,7 @@ Start at \((x_0,y_0)\)
   \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \sin^{-1}(x) + C
 \end{align*}}%
 \section*{Inverse Trigonometric Antidifferentiation Rules}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \int \sin^{-1}(x) &= x\sin^{-1}(x) + \sqrt{1-x^2}\\
   \int \tan^{-1}(x) &= x\tan^{-1}(x) - \frac{1}{2} \ln(1 + x^2) + C
 \end{align*}}%
@@ -227,7 +227,7 @@ or\\
 \section*{Partial Fraction Decomposition}
 Convert fractions of form \(\frac{\text{linear or constant}}{\text{factorable
 quadratic}}\) into its partial fraction.
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \frac{h(x)}{f(x)g(x)} &= \frac{A}{f(x)} + \frac{B}{g(x)} = \frac{Ag(x)}
   {f(x)g(x)} + \frac{Bf(x)}{f(x)g(x)} = \frac{Ag(x) + Bf(x)}{f(x)g(x)}\\
   h(x) &= Ag(x) + Bf(x)
@@ -235,7 +235,7 @@ quadratic}}\) into its partial fraction.
 Choose a value of \(x\) such that \(f(x) = 0\) and then \(g(x) = 0\) to solve
 for \(A\) and \(B\) respectively.
 \section*{Exponential Growth/Decay}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \dd{Q}{t} &= kQ\\
   Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
   k &= -\frac{\ln(b)}{p}
@@ -294,16 +294,16 @@ where \(\D{t}\) is the differential thickness of the shell.
 where \(n \in \{1,2,3,\dots\}\).
 \subsection*{Recursive Definition}
 \[
-  x_n = f(x_{n-1})
+  x_n = m(x_{n-1})
 \]
 where \(x_1\) is defined and \(n \in \{2,3,4,\dots\}\).
 \subsection*{Arithmetic}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   x_n &= d(n-1) + x_1\\
   x_n &= t_{n-1} + d
 \end{align*}}%
 \subsection*{Geometric}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   x_n &= x_1r^{n-1}\\
   x_n &= x_{n-1} r
 \end{align*}}%
@@ -341,7 +341,7 @@ To compare rates of \(f(x)\) and \(g(x)\) evaluate
 \]
 \section*{Improper Integrals}
 \subsection*{Type 1}
-{\rmskip \begin{align*}
+{\rmskip\begin{align*}
   \int_a^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_a^n f(x) \D{x}\\
   \int_{-\infty}^b f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^b f(x) \D{x}\\
   \int_{-\infty}^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^n f(x) \D{x}
@@ -370,10 +370,19 @@ Establish bound functions which can be antidifferentiated:
 \[
   l(x) \le f(x) \le u(x)
 \]
-{\rmaskip\begin{alignat*}{3}
+{\rmskip\begin{alignat*}{3}
   \text{Convergence if } &\int_a^b f(x) \D{x} \le \int_a^b u(x) \D{x}
-    &&\text{ where } \int_a^b u(x) \D{x} \text{ converges}\\
+    &&\text{ and } \int_a^b u(x) \D{x} \text{ converges}\\
   \text{Divergence if } &\int_a^b f(x) \D{x} \ge \int_a^b l(x) \D{x}
-    &&\text{ where } \int_a^b l(x) \D{x} \text{ diverges}
-\end{alignat*}}
+    &&\text{ and } \int_a^b l(x) \D{x} \text{ diverges}
+\end{alignat*}}%
+\subsection*{P-Integrals}
+An integral that fits the pattern:
+\[
+  \int_1^\infty \frac{1}{x^p} \D{x} \text{ where \(p\) is positive}
+\]
+{\rmaskip\begin{align*}
+  p > 1 &\implies \text{the integral converges to \(\tfrac{1}{p-1}\).}\\
+  0 < p \le 1 &\implies \text{the integral diverges.}
+\end{align*}}%
 \end{document}
