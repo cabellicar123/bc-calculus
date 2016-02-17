@@ -185,7 +185,8 @@ Start at \((x_0,y_0)\)
 {\rmskip\begin{align*}
   \int \sin(x) \D{x} &= -\cos(x) + C\\
   \int \cos(x) \D{x} &= \sin(x) + C\\
-  \int \tan(x) \D{x} &= -\ln(|cos(x)|) + C\\
+  \int \tan(x) \D{x} &= -\ln|cos(x)| + C\\
+  \int \sec(x) \D{x} &= \ln|\sec(x)+\tan(x)| + C\\
   \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
   \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
   \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
