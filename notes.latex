@@ -361,6 +361,15 @@ such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
     \(\left<a,b\right>\)) } &&= \lim_{n \to d^-} \int_a^n f(x) \D{x} +
     \lim_{n \to d^+} \int_n^b f(x) \D{x}
 \end{alignat*}
+\subsection*{P-Integrals}
+An integral that fits the pattern:
+\[
+  \int_1^\infty \frac{1}{x^p} \D{x} \text{ where \(p\) is positive}
+\]
+{\rmaskip\begin{align*}
+  p > 1 &\implies \text{the integral converges to \(\tfrac{1}{p-1}\).}\\
+  0 < p \le 1 &\implies \text{the integral diverges.}
+\end{align*}}%
 \section*{Comparison Tests}
 For type 1 improper integrals (\(a = \infty\) and\slash or \(b = \infty\))
 where the integrand is not easily antidifferentiable:
@@ -377,13 +386,4 @@ Establish bound functions which can be antidifferentiated:
   \text{Divergence if } &\int_a^b f(x) \D{x} \ge \int_a^b l(x) \D{x}
     &&\text{ and } \int_a^b l(x) \D{x} \text{ diverges}
 \end{alignat*}}%
-\subsection*{P-Integrals}
-An integral that fits the pattern:
-\[
-  \int_1^\infty \frac{1}{x^p} \D{x} \text{ where \(p\) is positive}
-\]
-{\rmaskip\begin{align*}
-  p > 1 &\implies \text{the integral converges to \(\tfrac{1}{p-1}\).}\\
-  0 < p \le 1 &\implies \text{the integral diverges.}
-\end{align*}}%
 \end{document}
