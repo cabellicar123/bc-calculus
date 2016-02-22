@@ -159,7 +159,7 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
 \end{align*}}%
 The easiest solution occurs when \(a = \) the given \(x\) value and \(C = \)
 the given \(y\) value.
-\section*{Solving Differential Equations With Antidifferentiation}
+\section*{Solving Differential Equations Using Antidifferentiation}
 {\rmaskip\begin{align*}
   \dd{y}{x} &= f(x)\\
   y &= \int f(x) + C \text{ (general form)}
@@ -235,7 +235,7 @@ quadratic}}\) into its partial fraction.
 \end{align*}}%
 Choose a value of \(x\) such that \(f(x) = 0\) and then \(g(x) = 0\) to solve
 for \(A\) and \(B\) respectively.
-\section*{Exponential Growth/Decay}
+\section*{Exponential Growth\slash Decay}
 {\rmskip\begin{align*}
   \dd{Q}{t} &= kQ\\
   Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
@@ -270,12 +270,12 @@ m\), or right after \(P(t) = m + 0.5\), if \(P(0) > m\).
   Semicircle: & \(A = \frac{1}{2}\pi r^2 = \frac{1}{8}\pi d^2\)\\
   Parabolic region: & \(A = \frac{2}{3}bh\)
 \end{tabular}}
-\section*{Calculating Volume Using the Disk/Washer Method for Solids of
+\section*{Calculating Volume Using the Disk\slash Washer Method for Solids of
 Rotation}
 \[
   V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{t}
 \]
-where \(\D{t}\) is the differential thickness of the disk/washer.
+where \(\D{t}\) is the differential thickness of the disk\slash washer.
 \section*{Calculating Volume Using the Cylindrical Shell Method for Solids of
 Rotation}
 \[
@@ -308,7 +308,7 @@ where \(x_1\) is defined and \(n \in \{2,3,4,\dots\}\).
   x_n &= x_1r^{n-1}\\
   x_n &= x_{n-1} r
 \end{align*}}%
-\subsection*{Convergence/Divergence}
+\subsection*{Convergence\slash Divergence}
 A sequence converges if the limit \(\displaystyle\lim_{n \to \infty} x_n\) is
 a finite number else it diverges.
 \section*{L'H\^{o}pitals Rule}
@@ -336,7 +336,7 @@ To compare rates of \(f(x)\) and \(g(x)\) evaluate
   \lim_{x \to \infty} \frac{f(x)}{g(x)} =
   \begin{dcases*}
     \infty & then \(f(x)\) grows faster than \(g\)\\
-    0 < i < \infty & then \(f(x)\) and \(g(x)\) grow at the same rate\\
+    \left<0, \infty\right> & then \(f(x)\) and \(g(x)\) grow at the same rate\\
     0 & then \(f(x)\) grows slower than \(g(x)\)
   \end{dcases*}
 \]
@@ -362,8 +362,8 @@ such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
     \lim_{n \to d^+} \int_n^b f(x) \D{x}
 \end{alignat*}
 \section*{Comparison Tests}
-For type 1 improper integrals (\(a = \infty\) and/or \(b = \infty\)) where the
-integrand is not easily antidifferentiable:
+For type 1 improper integrals (\(a = \infty\) and\slash or \(b = \infty\))
+where the integrand is not easily antidifferentiable:
 \[
   \int_a^b f(x) \D{x}
 \]
