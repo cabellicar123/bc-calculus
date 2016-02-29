@@ -142,6 +142,11 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
 \[
   f(c) = \frac{1}{b - a} \int_a^b f(x) \D{x}
 \]
+\section*{Linear Approximation}
+The linearization of \(f(x)\) at \(a\):
+\[
+  L(x) = f(a) + f'(a)(x-a)
+\]
 \section*{Fundamental Theorem of Calculus}
 \subsection*{Part 1}
 \[
@@ -386,25 +391,29 @@ where \(x_1\) is defined and \(k \in \{2,3,4,\dots\}\).
 \subsection*{Convergence\slash Divergence}
 A sequence converges if the limit \(\displaystyle\lim_{n \to \infty} x_n\) is
 a finite number else it diverges.
-\section*{Series}
-\subsection*{Finite}
+\section*{Infinite Series}
 \[
-  \sum_{k = a}^b x_k
-\]
-where \(a\) and \(b\) on \(\left<-\infty, \infty\right>\).
-\subsection*{Infinite}
-\[
-  \sum_{k = 1}^\infty x_k
+  \sum_{k=1}^\infty x_k
 \]
 \subsection*{Convergence}
-Consider the sequence of ``partial sums'' where:
+Consider the sequence of ``partial sums'' (\(s\)) where:
 \[
-  s_n = \sum_{k = 1}^n x_k
+  s_n = \sum_{k=1}^n x_k
 \]
 If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
+\[
+  \sum_{k=0}^\infty ar^{k} = \frac{a}{1-r} \text{ for } -1 < r < 1
+\]
 \subsection*{Power Series}
-{\rmskip\begin{gather*}
-  \sum_{k = 0}^\infty c_k x^k\\
+{\rmaskip\begin{gather*}
   \sum_{k=0}^\infty c_k(x-a)^k
 \end{gather*}}%
+Given an infinitely differentiable function \(f(x)\):
+\[
+  f(x) = \sum_{k=0}^\infty c_k(x-a)^k
+\]
+where
+\[
+  c_k = \frac{\dd[k]{f(x)}{x}a}{k!}
+\]
 \end{document}
