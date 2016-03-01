@@ -408,12 +408,11 @@ If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
 {\rmaskip\begin{gather*}
   \sum_{k=0}^\infty c_k(x-a)^k
 \end{gather*}}%
-Given an infinitely differentiable function \(f(x)\):
+\subsection*{Taylor/Maclaurin Series}
+Given an infinitely differentiable function \(f(x)\), the Taylor series
+centered around \(a\) is equal to the power series where
 \[
-  f(x) = \sum_{k=0}^\infty c_k(x-a)^k
+  c_k = \frac{f^{(k)}(a)}{k!}
 \]
-where
-\[
-  c_k = \frac{\dd[k]{f(x)}{x}a}{k!}
-\]
+A Maclaurin series is a Taylor series centered around 0 (\(a = 0\)).
 \end{document}
