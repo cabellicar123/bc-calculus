@@ -135,7 +135,7 @@ Assuming regular partition:
     \D{x}\\
   \int_a^p f(x) \D{x} + \int_p^b f(x) \D{x} &= \int_a^b f(x) \D{x}\\
   \int_a^b f(x) \D{x} &> \int_a^b g(x) \D{x} \text{ if }f(x) > g(x)
-    \text{ on the interval } [a,b]
+    \text{ on } [a,b]
 \end{align*}}%
 The mean value of \(f(x)\) over \([a,b]\) is:
 \[
@@ -158,7 +158,7 @@ The linearization of \(f(x)\) at \(a\):
   \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
 \]
 \subsection*{Part 2}
-{\rmbskip\begin{align*}
+{\rmskip\begin{align*}
   F'(x) &= f(x)\\
   \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
 \end{align*}}%
@@ -303,7 +303,7 @@ In order to evaluate a limit where
   \lim_{x \to a} \frac{f(x)}{g(x)} \implies \mquote{\frac{0}{0}} \text{ or }
   \mquote{\frac{\infty}{\infty}}
 \]
-instead evaluate
+evaluate
 \[
   \lim_{x \to a} \frac{f'(x)}{g'(x)}
 \]
@@ -312,10 +312,14 @@ In order to evaluate a limit where
   \lim_{x \to a} f(x)^{g(x)} \implies \mquote{0^0} \text{ or }
   \mquote{1^\infty} \text{ or } \mquote{\infty^0}
 \]
-instead evaluate
-\[
-  e^{-\lim_{x \to a} \frac{f'(x)g(x)^2}{f(x)g'(x)}}
-\]
+set \(L\) equal to the original limit and immediately take the log of both
+sides
+\begin{align*}
+  L &= \lim_{x \to a} f(x)^{g(x)}\\
+  \ln(L) &= \ln(\lim_{x \to a} f(x)^{g(x)})\\
+  \ln(L) &= \lim_{x \to a} g(x) \ln f(x)
+\end{align*}
+Evaluate the resulting limit and then raise \(e\) to that result
 \section*{Relative Rates of Growth}
 To compare rates of \(f(x)\) and \(g(x)\) evaluate
 \[
@@ -423,7 +427,7 @@ centered around \(a\) is equal to the power series with a specific \(c_k\):
 
 A Maclaurin series is a Taylor series centered around 0 (\(a = 0\)).
 
-The \(n\)-order polynomial function \(P(x)\), expressed \(P_n(x)\), is equal to
+The \(n\)-order polynomial function \(P_n(x)\) is equal to
 the Taylor series evaluated with an upper limit:
 \[
   P_n(x) = \sum_{k=0}^{n} c_k(x - a)^k
