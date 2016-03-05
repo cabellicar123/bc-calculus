@@ -52,10 +52,10 @@
 \end{align*}}%
 \section*{Limits}
 \[
-  \lim_{x \to c} f(x) = L
+  \lim_{x \to n} f(x) = L
 \]
 Means for any number \(\epsilon > 0\) there exists a number \(\delta > 0\) such
-that if \(0 < |x - c| < \delta\) then \(|f(x) - L| < \epsilon\).
+that if \(0 < |x - n| < \delta\) then \(|f(x) - L| < \epsilon\).
 \[
   \lim_{x \to a}f(g(x)) = f\left(\lim_{x \to a}g(x)\right) \text{ if } f(g(x))
   \text{ is continuous at } x
@@ -179,7 +179,7 @@ include any discontinuities.
 \section*{Euler's Method}
 Start at \((x_0,y_0)\)
 {\rmbskip\begin{align*}
-  \Delta y &= \Delta x \cdot \dd{x}{y} \biggr|_{(x_{n-1},y_{n-1})} \\
+  \Delta y &= \Delta x \cdot \dd{y}{x} \biggr|_{(x_{n-1},y_{n-1})} \\
   (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
 \end{align*}}%
 \section*{Antidifferentiation Rules}
