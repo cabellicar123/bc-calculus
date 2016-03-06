@@ -14,7 +14,7 @@
 
 \titleformat*{\subsection}{\bfseries}
 
-\let\oldimplies\implies
+\let\oldimplies\implies%
 \renewcommand*{\implies}{\Rightarrow}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\rmaskip}{\setlength{\abovedisplayskip}{0pt}}
@@ -82,11 +82,11 @@ Symmetric difference quotient:
   \dd{}{x}c f(x) &= c f'(x)\\
   \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
   \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
-  \dd{}{x}f(x)^n &= nf(x)^{n-1} \cdot f'(x)\\
+  \dd{}{x}{f(x)}^n &= n{f(x)}^{n-1} \cdot f'(x)\\
   \dd{}{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
   \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
   \dd{}{x}\left(\frac{f(x)}{g(x)}\right) &= \frac{f'(x)g(x) - f(x)g'(x)}
-    {g(x)^2}\\
+  {{g(x)}^2}\\
   \dd{}{x}|f(x)| &= \frac{|f(x)|}{f(x)} \cdot f'(x)\\
   \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
   \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
@@ -102,9 +102,9 @@ Symmetric difference quotient:
 \end{align*}}%
 \section*{Inverse Trigonometric Differentiation Rules}
 {\rmskip\begin{align*}
-  \dd{}{x}\sin^{-1}(f(x)) &= \frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
-  \dd{}{x}\cos^{-1}(f(x)) &= -\frac{f'(x)}{\sqrt{1 - f(x)^2}}\\
-  \dd{}{x}\tan^{-1}(f(x)) &= \frac{f'(x)}{1 + f(x)^2}
+  \dd{}{x}\sin^{-1}(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+  \dd{}{x}\cos^{-1}(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+  \dd{}{x}\tan^{-1}(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
 \end{align*}}%
 \section*{Mean Value Theorem}
 If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
@@ -195,7 +195,7 @@ Start at \((x_0,y_0)\)
 {\rmskip\begin{align*}
   \int \sin(x) \D{x} &= -\cos(x) + C\\
   \int \cos(x) \D{x} &= \sin(x) + C\\
-  \int \tan(x) \D{x} &= -\ln|cos(x)| + C\\
+  \int \tan(x) \D{x} &= -\ln|\cos(x)| + C\\
   \int \sec(x) \D{x} &= \ln|\sec(x)+\tan(x)| + C\\
   \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
   \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
@@ -213,8 +213,8 @@ Start at \((x_0,y_0)\)
 \section*{U-Substitution}
 To differentiate \(\int f(g(x)) \D{x}\) where \(f(x)\) and \(g(x)\) are both
 antidifferentiable, set \(u = g(x)\). Then solve for \(du\) and replace \(dx\)
-so that the equation \(\int f(u) \D{u}\) results. Antidifferentiate and
-replace \(u\) with \(g(x)\).
+so that the equation \(A\int f(u) \D{u}\) results (where \(A\) is the necessary
+``fudge factor''). Antidifferentiate and replace \(u\) with \(g(x)\).
 \section*{Integration by Parts}
 \[
   \int u \D{v} = uv - \int v \D{u} + C
@@ -238,11 +238,11 @@ or\\
 \section*{Partial Fraction Decomposition}
 Convert fractions of form \(\frac{\text{linear or constant}}{\text{factorable
 quadratic}}\) into its partial fraction.
-{\rmskip\begin{align*}
+\begin{align*}
   \frac{h(x)}{f(x)g(x)} &= \frac{A}{f(x)} + \frac{B}{g(x)} = \frac{Ag(x)}
   {f(x)g(x)} + \frac{Bf(x)}{f(x)g(x)} = \frac{Ag(x) + Bf(x)}{f(x)g(x)}\\
   h(x) &= Ag(x) + Bf(x)
-\end{align*}}%
+\end{align*}
 Choose a value of \(x\) such that \(f(x) = 0\) and then \(g(x) = 0\) to solve
 for \(A\) and \(B\) respectively.
 \section*{Exponential Growth\slash Decay}
@@ -267,8 +267,12 @@ The maximum carrying capacity is reached when \(P(t) = m - 0.5\), if \(P(0) <
 m\), or right after \(P(t) = m + 0.5\), if \(P(0) > m\).
 \section*{Calculating Area of Regions Bounded by Two Functions}
 \[
-  A = \left|\int_a^b f(x) - g(x) \D{x}\right|
+  A = \int_a^b f(x) - g(x) \D{x}
 \]
+where \(f(x)\) is the upper function and \(g(x)\) is the lower function.
+
+If the functions cross, multiple integrals must be taken with the appropriate
+upper and lower functions.
 \section*{Typical Cross-Sectional Areas}
 {\renewcommand{\arraystretch}{1.5}\begin{tabular}{l@{ }l}
   Square: & \(A = b^2 = \frac{1}{2}d^2\)\\
@@ -294,8 +298,8 @@ Rotation}
 where \(\D{t}\) is the differential thickness of the shell.
 \section*{Calculating Arc Lengh}
 \[
-  l = \int_a^b \sqrt{1+\left(\dd{y}{x}\right)^2} \D{x}
-    = \int_c^d \sqrt{1+\left(\dd{x}{y}\right)^2} \D{y}
+  l = \int_a^b \sqrt{1+{\left(\dd{y}{x}\right)}^2} \D{x}
+  = \int_c^d \sqrt{1+{\left(\dd{x}{y}\right)}^2} \D{y}
 \]
 \section*{L'H\^{o}pitals Rule}
 In order to evaluate a limit where
@@ -309,14 +313,14 @@ evaluate
 \]
 In order to evaluate a limit where
 \[
-  \lim_{x \to a} f(x)^{g(x)} \implies \mquote{0^0} \text{ or }
+  \lim_{x \to a} {f(x)}^{g(x)} \implies \mquote{0^0} \text{ or }
   \mquote{1^\infty} \text{ or } \mquote{\infty^0}
 \]
 set \(L\) equal to the original limit and immediately take the log of both
 sides
 \begin{align*}
-  L &= \lim_{x \to a} f(x)^{g(x)}\\
-  \ln(L) &= \ln(\lim_{x \to a} f(x)^{g(x)})\\
+  L &= \lim_{x \to a} {f(x)}^{g(x)}\\
+  \ln(L) &= \ln\left(\lim_{x \to a} {f(x)}^{g(x)}\right)\\
   \ln(L) &= \lim_{x \to a} g(x) \ln f(x)
 \end{align*}
 Evaluate the resulting limit and then raise \(e\) to that result
@@ -416,13 +420,13 @@ If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
 \]
 \subsection*{Power Series}
 \[
-  \isum c_k(x-a)^k
+  \isum c_k{(x-a)}^k
 \]
 \subsection*{Taylor/Maclaurin Series}
 Given an infinitely differentiable function \(f(x)\), the Taylor series
 centered around \(a\) is equal to the power series with a specific \(c_k\):
 \[
-  f(x) = \isum \frac{f^{(k)}(a)}{k!}(x-a)^k
+  f(x) = \isum \frac{f^{(k)}(a)}{k!}{(x-a)}^k
 \]
 
 A Maclaurin series is a Taylor series centered around 0 (\(a = 0\)).
@@ -430,16 +434,16 @@ A Maclaurin series is a Taylor series centered around 0 (\(a = 0\)).
 The \(n\)-order polynomial function \(P_n(x)\) is equal to
 the Taylor series evaluated with an upper limit:
 \[
-  P_n(x) = \sum_{k=0}^{n} c_k(x - a)^k
+  P_n(x) = \sum_{k=0}^{n} c_k{(x - a)}^k
 \]
 \subsection*{Common Maclaurin Series}
 {\rmskip\begin{alignat*}{3}
   \frac{1}{1-x} &= \isum x^k &&\quad x \in \left<-1,1\right>\\
   e^x &= \isum \frac{x^k}{k!} &&\quad x \in \R\\
-  \sin(x) &= \isum (-1)^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
-  \cos(x) &= \isum (-1)^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
-  \tan^{-1} &= \isum (-1)^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
-  \ln(x+1) &= \isum (-1)^{k+1} \frac{x^k}{k} &&\quad x \in
+  \sin(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
+  \cos(x) &= \isum {(-1)}^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
+  \tan^{-1} &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
+  \ln(x+1) &= \isum {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
     \left<-1,1\right]
 \end{alignat*}}%
 \end{document}
