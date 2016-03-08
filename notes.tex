@@ -414,10 +414,6 @@ Consider the sequence of ``partial sums'' (\(s\)) where:
   s_n = \sum_{k=0}^n x_k
 \]
 If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
-\subsection*{Geometric Series}
-\[
-  \isum ar^{k} = \frac{a}{1-r} \quad r \in \left<-1,1\right>
-\]
 \subsection*{Power Series}
 \[
   \isum c_k{(x-a)}^k
@@ -431,19 +427,19 @@ centered around \(a\) is equal to the power series with a specific \(c_k\):
 
 A Maclaurin series is a Taylor series centered around 0 (\(a = 0\)).
 
-The \(n\)-order polynomial function \(P_n(x)\) is equal to
-the Taylor series evaluated with an upper limit:
+The \(n\)-order polynomial function \(P_n(x)\) that best fits \(f(x)\) is
+equal to the Taylor series evaluated with upper limit \(n\):
 \[
-  P_n(x) = \sum_{k=0}^{n} c_k{(x - a)}^k
+  P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}{(x-a)}^k
 \]
 \subsection*{Common Maclaurin Series}
 {\rmskip\begin{alignat*}{3}
-  \frac{1}{1-x} &= \isum x^k &&\quad x \in \left<-1,1\right>\\
+  \frac{a}{1-x} &= \isum ax^k &&\quad x \in \left<-1,1\right>\\
   e^x &= \isum \frac{x^k}{k!} &&\quad x \in \R\\
   \sin(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
   \cos(x) &= \isum {(-1)}^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
-  \tan^{-1} &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
-  \ln(x+1) &= \isum {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
+  \tan^{-1}(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
+  \ln(x+1) &= \sum_{k=1}^\infty {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
     \left<-1,1\right]
 \end{alignat*}}%
 \end{document}
