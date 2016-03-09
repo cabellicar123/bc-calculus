@@ -20,6 +20,9 @@
 \newcommand*{\rmaskip}{\setlength{\abovedisplayskip}{0pt}}
 \newcommand*{\rmbskip}{\setlength{\belowdisplayskip}{0pt}}
 \newcommand*{\rmskip}{\rmaskip \rmbskip}
+\newcommand*{\isin}{\sin^{-1}}
+\newcommand*{\icos}{\cos^{-1}}
+\newcommand*{\itan}{\tan^{-1}}
 \newcommand*{\dd}[3][]{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}
 \newcommand*{\D}[1]{\mathop{}\!\mathrm{d} #1}
 \newcommand*{\isum}[1][k]{\sum_{#1=0}^\infty}
@@ -102,9 +105,9 @@ Symmetric difference quotient:
 \end{align*}}%
 \section*{Inverse Trigonometric Differentiation Rules}
 {\rmskip\begin{align*}
-  \dd{}{x}\sin^{-1}(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-  \dd{}{x}\cos^{-1}(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-  \dd{}{x}\tan^{-1}(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
+  \dd{}{x}\isin(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+  \dd{}{x}\icos(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+  \dd{}{x}\itan(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
 \end{align*}}%
 \section*{Mean Value Theorem}
 If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
@@ -202,13 +205,13 @@ Start at \((x_0,y_0)\)
   \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
   \int \sec^2(x) \D{x} &= \tan(x) + C\\
   \int \sec(x) \tan(x) \D{x} &= \sec(x) + C\\
-  \int \frac{1}{1+x^2} \D{x} &= \tan^{-1}(x) + C\\
-  \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \sin^{-1}(x) + C
+  \int \frac{1}{1+x^2} \D{x} &= \itan(x) + C\\
+  \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \isin(x) + C
 \end{align*}}%
 \section*{Inverse Trigonometric Antidifferentiation Rules}
 {\rmskip\begin{align*}
-  \int \sin^{-1}(x) &= x\sin^{-1}(x) + \sqrt{1-x^2}\\
-  \int \tan^{-1}(x) &= x\tan^{-1}(x) - \frac{1}{2} \ln(1 + x^2) + C
+  \int \isin(x) &= x\isin(x) + \sqrt{1-x^2}\\
+  \int \itan(x) &= x\itan(x) - \frac{1}{2} \ln(1 + x^2) + C
 \end{align*}}%
 \section*{U-Substitution}
 To differentiate \(\int f(g(x)) \D{x}\) where \(f(x)\) and \(g(x)\) are both
@@ -438,8 +441,17 @@ equal to the Taylor series evaluated with upper limit \(n\):
   e^x &= \isum \frac{x^k}{k!} &&\quad x \in \R\\
   \sin(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
   \cos(x) &= \isum {(-1)}^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
-  \tan^{-1}(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
+  \itan(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
   \ln(x+1) &= \sum_{k=1}^\infty {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
     \left<-1,1\right]
 \end{alignat*}}%
+\subsection*{Calculating Error for a Taylor Polynomial}
+\[
+  P_\infty(x) = P_n(x) + R_n(x)
+\]
+where \(P_\infty\) is the entire infinite Taylor series and \(R_n\) is the
+remainder.
+\[
+  |P_n(x) - f(x)| = \text{magnitude of error}
+\]
 \end{document}
