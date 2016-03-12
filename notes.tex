@@ -10,7 +10,7 @@
 \usepackage[compact]{titlesec}
 \usepackage{tikz}
 
-\usetikzlibrary{tikzmark}
+\usetikzlibrary{matrix}
 
 \setlength{\parindent}{0pt}
 \setlength{\mathindent}{0pt}
@@ -228,19 +228,25 @@ so that the equation \(A\int f(u) \D{u}\) results (where \(A\) is the necessary
 
 or
 
-{\renewcommand{\arraystretch}{1.5}\begin{tabular}{cr@{\qquad}l}
-  \(+\) & \(u\)\tikzmark{d0} & \(\D{v}\)\\
-  \(-\) & \(\dd{u}{x}\)\tikzmark{d1} & \tikzmark{i1}\(\int \D{v} \D{x}\)\\
-  \(+\) & \(\dd[2]{u}{x}\)\tikzmark{d2} & \tikzmark{i2}\(\int\left(%
-    \int\D{v}\D{x}\right)\D{x}\)\\
-  \(-\) & \(\dd[3]{u}{x}\)\tikzmark{d3} & \tikzmark{i3}\(\int\left(\int\left(%
-    \int\D{v}\D{x}\right)\D{x}\right)\D{x}\)\\
-  \(+\) & \(\cdots\)\tikzmark{d4} & \tikzmark{i4}\(\cdots\)\\
-        & 0 & \tikzmark{i5}\(\cdots\)
-\end{tabular}}
-\tikz[remember picture]{\foreach \d/\i in {d0/i1,d1/i2,d2/i3,d3/i4,d4/i5}{
-  \draw[overlay,yshift=0.6ex] (pic cs:\d) to[out=0,in=180] (pic cs:\i);
-}}
+\begin{tikzpicture}
+  \matrix[matrix of nodes,
+    nodes={minimum height=2em},
+    column sep=1em,
+    column 2/.style={anchor=base east},
+    column 3/.style={anchor=base west}]{
+    \(+\) & |(d0)| \(u\) &[1em] \(\D{v}\)\\
+    \(-\) & |(d1)| \(\dd{u}{x}\) & |(i1)| \(\int \D{v} \D{x}\)\\
+    \(+\) & |(d2)| \(\dd[2]{u}{x}\) & |(i2)| \(\int\left(%
+      \int\D{v}\D{x}\right)\D{x}\)\\
+    \(-\) & |(d3)| \(\dd[3]{u}{x}\) & |(i3)| \(\int\left(\int\left(%
+      \int\D{v}\D{x}\right)\D{x}\right)\D{x}\)\\
+    \(+\) & |(d4)| \(\cdots\) & |(i4)| \(\cdots\)\\
+          & 0 & |(i5)| \(\cdots\)\\
+  };
+  \foreach \d/\i in {d0/i1,d1/i2,d2/i3,d3/i4,d4/i5}{
+    \draw (\d) to[out=0,in=180] (\i);
+  }
+\end{tikzpicture}
 \[
   \int u \D{v} = \left(u \cdot \int \D{v} \D{x}\right) - \left(
     \dd{u}{x} \cdot \int \left( \int \D{v} \D{x} \right) \D{x}
