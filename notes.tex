@@ -20,12 +20,9 @@
 \let\oldimplies\implies%
 \renewcommand*{\implies}{\Rightarrow}
 \newcommand*{\R}{\mathbb{R}}
-\newcommand*{\rmaskip}{\setlength{\abovedisplayskip}{0pt}}
-\newcommand*{\rmbskip}{\setlength{\belowdisplayskip}{0pt}}
-\newcommand*{\rmskip}{\rmaskip \rmbskip}
-\newcommand*{\isin}{\sin^{-1}}
-\newcommand*{\icos}{\cos^{-1}}
-\newcommand*{\itan}{\tan^{-1}}
+\newcommand*{\asin}{\sin^{-1}}
+\newcommand*{\acos}{\cos^{-1}}
+\newcommand*{\atan}{\tan^{-1}}
 \newcommand*{\dd}[3][]{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}
 \newcommand*{\D}[1]{\mathop{}\!\mathrm{d} #1}
 \newcommand*{\isum}[1][k]{\sum_{#1=0}^\infty}
@@ -45,17 +42,27 @@
 }
 \makeatother
 
+\newenvironment{rmaskip}{\setlength{\abovedisplayskip}{0pt}\ignorespaces}%
+  {\ignorespacesafterend}
+\newenvironment{rmbskip}{\setlength{\belowdisplayskip}{0pt}\ignorespaces}%
+  {\ignorespacesafterend}
+\newenvironment{rmskip}{\setlength{\abovedisplayskip}{0pt}%
+  \setlength{\belowdisplayskip}{0pt}\ignorespaces}%
+  {\ignorespacesafterend}
+
 \begin{document}
 \section*{Double Angle Formulas}
-{\rmskip\begin{align*}
-  \sin(2x) &= 2\sin(x)\cos(x)\\
-  \cos(2x) &= \cos^2(x) - \sin^2(x)\\
-    &= 2\cos^2(x) - 1\\
-    &= 1-2\sin^2(x)\\
-  \tan(2x) &= \frac{2\tan(x)}{1 - \tan^2(x)}\\
-  \sin^2(x) &= \frac{1}{2}(1-\cos(2x))\\
-  \cos^2(x) &= \frac{1}{2}(1+\cos(2x))
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \sin(2x) &= 2\sin(x)\cos(x)\\
+    \cos(2x) &= \cos^2(x) - \sin^2(x)\\
+      &= 2\cos^2(x) - 1\\
+      &= 1-2\sin^2(x)\\
+    \tan(2x) &= \frac{2\tan(x)}{1 - \tan^2(x)}\\
+    \sin^2(x) &= \frac{1}{2}(1-\cos(2x))\\
+    \cos^2(x) &= \frac{1}{2}(1+\cos(2x))
+  \end{align*}
+\end{rmskip}
 \section*{Limits}
 \[
   \lim_{x \to n} f(x) = L
@@ -71,151 +78,187 @@ Standard difference quotient:
   f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x)}{h}
 \]
 Symmetric difference quotient:
-\[
-  f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x-h)}{2h}
-\]
+\begin{rmbskip}
+  \[
+    f'(x) = \lim_{h \to 0}\frac{f(x+h) - f(x-h)}{2h}
+  \]
+\end{rmbskip}
 \section*{Continuity and Differentiability}
 \(f(x)\) is continuous at \(x\) if:
 \[
   f(x) = \lim_{k \to x^+}f(k) = \lim_{k \to x^-}f(k)
 \]
 \(f(x)\) is differentiable at \(x\) if:
-\[
-  f'_+(x) = f'_-(x)
-\]
+\begin{rmbskip}
+  \[
+    f'_+(x) = f'_-(x)
+  \]
+\end{rmbskip}
 \section*{Differentiation Rules}
-{\rmskip\begin{align*}
-  \dd{}{x}c f(x) &= c f'(x)\\
-  \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
-  \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
-  \dd{}{x}{f(x)}^n &= n{f(x)}^{n-1} \cdot f'(x)\\
-  \dd{}{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
-  \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
-  \dd{}{x}\left(\frac{f(x)}{g(x)}\right) &= \frac{f'(x)g(x) - f(x)g'(x)}
-  {{g(x)}^2}\\
-  \dd{}{x}|f(x)| &= \frac{|f(x)|}{f(x)} \cdot f'(x)\\
-  \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
-  \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \dd{}{x}c f(x) &= c f'(x)\\
+    \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
+    \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
+    \dd{}{x}{f(x)}^n &= n{f(x)}^{n-1} \cdot f'(x)\\
+    \dd{}{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
+    \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
+    \dd{}{x}\left(\frac{f(x)}{g(x)}\right) &= \frac{f'(x)g(x) - f(x)g'(x)}
+      {{g(x)}^2}\\
+    \dd{}{x}|f(x)| &= \frac{|f(x)|}{f(x)} \cdot f'(x)\\
+    \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
+    \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
+  \end{align*}
+\end{rmskip}
 \section*{Trigonometric Differentiation Rules}
-{\rmskip\begin{align*}
-  \dd{}{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
-  \dd{}{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
-  \dd{}{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
-  \dd{}{x}\sec(f(x)) &= \sec(f(x))\tan(f(x)) \cdot f'(x)\\
-  \dd{}{x}\csc(f(x)) &= -\csc(f(x))\cot(f(x)) \cdot f'(x)\\
-  \dd{}{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \dd{}{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
+    \dd{}{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
+    \dd{}{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
+    \dd{}{x}\sec(f(x)) &= \sec(f(x))\tan(f(x)) \cdot f'(x)\\
+    \dd{}{x}\csc(f(x)) &= -\csc(f(x))\cot(f(x)) \cdot f'(x)\\
+    \dd{}{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
+  \end{align*}
+\end{rmskip}
 \section*{Inverse Trigonometric Differentiation Rules}
-{\rmskip\begin{align*}
-  \dd{}{x}\isin(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-  \dd{}{x}\icos(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-  \dd{}{x}\itan(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \dd{}{x}\asin(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+    \dd{}{x}\acos(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+    \dd{}{x}\atan(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
+  \end{align*}
+\end{rmskip}
 \section*{Mean Value Theorem}
 If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
 \([a,b]\) such that:
-\[
-  f'(c) = \frac{f(b) - f(a)}{b - a}
-\]
+\begin{rmbskip}
+  \[
+    f'(c) = \frac{f(b) - f(a)}{b - a}
+  \]
+\end{rmbskip}
 \section*{Reimann Sums}
 \[
   \sum_{k=1}^n f(x_k) \Delta x\\
 \]
 Assuming regular partition:
-{\rmbskip\begin{align*}
-  \text{LRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-1)(b - a)}{n}\right)
-    \frac{b-a}{n}\\
-  \text{MRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-0.5)(b - a)}{n}\right)
-    \frac{b-a}{n}\\
-  \text{RRAM} &= \sum_{k=1}^n f\left(a + \frac{k(b - a)}{n}\right)
-    \frac{b-a}{n}
-\end{align*}}%
+\begin{rmbskip}
+  \begin{align*}
+    \text{LRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-1)(b - a)}{n}\right)
+      \frac{b-a}{n}\\
+    \text{MRAM} &= \sum_{k=1}^n f\left(a + \frac{(k-0.5)(b - a)}{n}\right)
+      \frac{b-a}{n}\\
+    \text{RRAM} &= \sum_{k=1}^n f\left(a + \frac{k(b - a)}{n}\right)
+      \frac{b-a}{n}
+  \end{align*}
+\end{rmbskip}
 \section*{Definite Integration}
-{\rmaskip\begin{align*}
-  \int_a^b f(x) \D{x} &= \lim_{n \to \infty} \sum_{k=1}^n f(x_k)\Delta x\\
-  \int_a^a f(x) \D{x} &= 0\\
-  \int_a^b f(x) \D{x} &= -\int_b^a f(x) \D{x}\\
-  \int_a^b c f(x) \D{x} &= c \int_a^b f(x) \D{x}\\
-  \int_a^b (f(x) \pm g(x)) \D{x} &= \int_a^b f(x) \D{x} \pm \int_a^b g(x)
-    \D{x}\\
-  \int_a^p f(x) \D{x} + \int_p^b f(x) \D{x} &= \int_a^b f(x) \D{x}\\
-  \int_a^b f(x) \D{x} &> \int_a^b g(x) \D{x} \text{ if }f(x) > g(x)
-    \text{ on } [a,b]
-\end{align*}}%
+\begin{rmaskip}
+  \begin{align*}
+    \int_a^b f(x) \D{x} &= \lim_{n \to \infty} \sum_{k=1}^n f(x_k)\Delta x\\
+    \int_a^a f(x) \D{x} &= 0\\
+    \int_a^b f(x) \D{x} &= -\int_b^a f(x) \D{x}\\
+    \int_a^b c f(x) \D{x} &= c \int_a^b f(x) \D{x}\\
+    \int_a^b (f(x) \pm g(x)) \D{x} &= \int_a^b f(x) \D{x} \pm \int_a^b g(x)
+      \D{x}\\
+    \int_a^p f(x) \D{x} + \int_p^b f(x) \D{x} &= \int_a^b f(x) \D{x}\\
+    \int_a^b f(x) \D{x} &> \int_a^b g(x) \D{x} \text{ if }f(x) > g(x)
+      \text{ on } [a,b]
+  \end{align*}
+\end{rmaskip}
 The mean value of \(f(x)\) over \([a,b]\) is:
-\[
-  \frac{1}{b - a} \int_a^b f(x) \D{x}
-\]
+\begin{rmbskip}
+  \[
+    \frac{1}{b - a} \int_a^b f(x) \D{x}
+  \]
+\end{rmbskip}
 \section*{Mean Value of a Function Theorem}
 If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
 \([a,b]\) such that:
-\[
-  f(c) = \frac{1}{b - a} \int_a^b f(x) \D{x}
-\]
+\begin{rmbskip}
+  \[
+    f(c) = \frac{1}{b - a} \int_a^b f(x) \D{x}
+  \]
+\end{rmbskip}
 \section*{Linear Approximation}
 The linearization of \(f(x)\) at \(a\):
-\[
-  L(x) = f(a) + f'(a)(x-a)
-\]
+\begin{rmbskip}
+  \[
+    L(x) = f(a) + f'(a)(x-a)
+  \]
+\end{rmbskip}
 \section*{Fundamental Theorem of Calculus}
 \subsection*{Part 1}
 \[
   \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
 \]
 \subsection*{Part 2}
-{\rmskip\begin{align*}
-  F'(x) &= f(x)\\
-  \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    F'(x) &= f(x)\\
+    \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
+  \end{align*}
+\end{rmskip}
 \section*{Solving Differential Equations Using A Definite Integral}
-{\rmaskip\begin{align*}
-  \dd{y}{x} &= f(x)\\
-  y &= \int_a^x f(t) \D{t} + C
-\end{align*}}%
+\begin{rmaskip}
+  \begin{align*}
+    \dd{y}{x} &= f(x)\\
+    y &= \int_a^x f(t) \D{t} + C
+  \end{align*}
+\end{rmaskip}
 The easiest solution occurs when \(a = \) the given \(x\) value and \(C = \)
 the given \(y\) value.
 \section*{Solving Differential Equations Using Antidifferentiation}
-{\rmaskip\begin{align*}
-  \dd{y}{x} &= f(x)\\
-  y &= \int f(x) + C \text{ (general form)}
-\end{align*}}%
+\begin{rmaskip}
+  \begin{align*}
+    \dd{y}{x} &= f(x)\\
+    y &= \int f(x) + C \text{ (general form)}
+  \end{align*}
+\end{rmaskip}
 Specify largest domain of \(x\) that includes specified \(x\) and does not
 include any discontinuities.
 \section*{Euler's Method}
 Start at \((x_0,y_0)\)
-{\rmbskip\begin{align*}
-  \Delta y &= \Delta x \cdot \dd{y}{x} \biggr|_{(x_{n-1},y_{n-1})} \\
-  (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
-\end{align*}}%
+\begin{rmbskip}
+  \begin{align*}
+    \Delta y &= \Delta x \cdot \dd{y}{x} \biggr|_{(x_{n-1},y_{n-1})}\\
+    (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
+  \end{align*}
+\end{rmbskip}
 \section*{Antidifferentiation Rules}
-{\rmskip\begin{align*}
-  \int cf(x) \D{x} &= c \int f(x) \D{x}\\
-  \int f(x) \pm g(x) \D{x} &= \int f(x) \D{x} \pm \int g(x) \D{x}\\
-  \int x^n \D{x} &= \frac{x^{n+1}}{n+1} + C\\
-  \int \frac{1}{x} \D{x} &= \ln|x| + C\\
-  \int b^x \D{x} &= \frac{b^x}{\ln b} + C\\
-  \int \ln x \D{x} &= x\ln x - x + C
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \int cf(x) \D{x} &= c \int f(x) \D{x}\\
+    \int f(x) \pm g(x) \D{x} &= \int f(x) \D{x} \pm \int g(x) \D{x}\\
+    \int x^n \D{x} &= \frac{x^{n+1}}{n+1} + C\\
+    \int \frac{1}{x} \D{x} &= \ln|x| + C\\
+    \int b^x \D{x} &= \frac{b^x}{\ln b} + C\\
+    \int \ln x \D{x} &= x\ln x - x + C
+  \end{align*}
+\end{rmskip}
 \section*{Trigonometric Antidifferentiation Rules}
-{\rmskip\begin{align*}
-  \int \sin(x) \D{x} &= -\cos(x) + C\\
-  \int \cos(x) \D{x} &= \sin(x) + C\\
-  \int \tan(x) \D{x} &= -\ln|\cos(x)| + C\\
-  \int \sec(x) \D{x} &= \ln|\sec(x)+\tan(x)| + C\\
-  \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
-  \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
-  \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
-  \int \sec^2(x) \D{x} &= \tan(x) + C\\
-  \int \sec(x) \tan(x) \D{x} &= \sec(x) + C\\
-  \int \frac{1}{1+x^2} \D{x} &= \itan(x) + C\\
-  \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \isin(x) + C
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \int \sin(x) \D{x} &= -\cos(x) + C\\
+    \int \cos(x) \D{x} &= \sin(x) + C\\
+    \int \tan(x) \D{x} &= -\ln|\cos(x)| + C\\
+    \int \sec(x) \D{x} &= \ln|\sec(x)+\tan(x)| + C\\
+    \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
+    \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
+    \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
+    \int \sec^2(x) \D{x} &= \tan(x) + C\\
+    \int \sec(x) \tan(x) \D{x} &= \sec(x) + C\\
+    \int \frac{1}{1+x^2} \D{x} &= \atan(x) + C\\
+    \int \frac{1}{\sqrt{1-x^2}} \D{x} &= \asin(x) + C
+  \end{align*}
+\end{rmskip}
 \section*{Inverse Trigonometric Antidifferentiation Rules}
-{\rmskip\begin{align*}
-  \int \isin(x) &= x\isin(x) + \sqrt{1-x^2}\\
-  \int \itan(x) &= x\itan(x) - \frac{1}{2} \ln(1 + x^2) + C
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \int \asin(x) &= x\asin(x) + \sqrt{1-x^2}\\
+    \int \atan(x) &= x\atan(x) - \frac{1}{2} \ln(1 + x^2) + C
+  \end{align*}
+\end{rmskip}
 \section*{U-Substitution}
 To differentiate \(\int f(g(x)) \D{x}\) where \(f(x)\) and \(g(x)\) are both
 antidifferentiable, set \(u = g(x)\). Then solve for \(du\) and replace \(dx\)
@@ -247,12 +290,14 @@ or
     \draw (\d) to[out=0,in=180] (\i);
   }
 \end{tikzpicture}
-\[
-  \int u \D{v} = \left(u \cdot \int \D{v} \D{x}\right) - \left(
-    \dd{u}{x} \cdot \int \left( \int \D{v} \D{x} \right) \D{x}
-    \right) + \left(\dd[2]{u}{x} \cdot \int \left( \int \left( \int \D{v}
-    \D{x} \right) \D{x} \right) \D{x} \right) - \dots
-\]
+\begin{rmbskip}
+  \[
+    \int u \D{v} = \left(u \cdot \int \D{v} \D{x}\right) - \left(
+      \dd{u}{x} \cdot \int \left( \int \D{v} \D{x} \right) \D{x}
+      \right) + \left(\dd[2]{u}{x} \cdot \int \left( \int \left( \int \D{v}
+      \D{x} \right) \D{x} \right) \D{x} \right) - \dots
+  \]
+\end{rmbskip}
 \section*{Partial Fraction Decomposition}
 Convert fractions of form \(\frac{\text{linear or constant}}{\text{factorable
 quadratic}}\) into its partial fraction.
@@ -264,15 +309,19 @@ quadratic}}\) into its partial fraction.
 Choose a value of \(x\) such that \(f(x) = 0\) and then \(g(x) = 0\) to solve
 for \(A\) and \(B\) respectively.
 \section*{Exponential Growth\slash Decay}
-{\rmskip\begin{align*}
-  \dd{Q}{t} &= kQ\\
-  Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
-  k &= -\frac{\ln(b)}{p}
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \dd{Q}{t} &= kQ\\
+    Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
+    k &= -\frac{\ln(b)}{p}
+  \end{align*}
+\end{rmskip}
 \subsection*{Half-life}
-\[
-  k = -\frac{\ln(2)}{p}
-\]
+\begin{rmbskip}
+  \[
+    k = -\frac{\ln(2)}{p}
+  \]
+\end{rmbskip}
 \section*{Logistic Differential Equation}
 \[
   \dd{P}{t} = kP(m - P) = kPm\left(1-\frac{P}{m}\right)
@@ -315,10 +364,12 @@ Rotation}
 \]
 where \(\D{t}\) is the differential thickness of the shell.
 \section*{Calculating Arc Lengh}
-\[
-  l = \int_a^b \sqrt{1+{\left(\dd{y}{x}\right)}^2} \D{x}
-  = \int_c^d \sqrt{1+{\left(\dd{x}{y}\right)}^2} \D{y}
-\]
+\begin{rmbskip}
+  \[
+    l = \int_a^b \sqrt{1+{\left(\dd{y}{x}\right)}^2} \D{x}
+    = \int_c^d \sqrt{1+{\left(\dd{x}{y}\right)}^2} \D{y}
+  \]
+\end{rmbskip}
 \section*{L'H\^{o}pitals Rule}
 In order to evaluate a limit where
 \[
@@ -344,21 +395,27 @@ sides
 Evaluate the resulting limit and then raise \(e\) to that result
 \section*{Relative Rates of Growth}
 To compare rates of \(f(x)\) and \(g(x)\) evaluate
-\[
-  \lim_{x \to \infty} \frac{f(x)}{g(x)} =
-  \begin{dcases*}
-    \infty & then \(f(x)\) grows faster than \(g\)\\
-    \left<0, \infty\right> & then \(f(x)\) and \(g(x)\) grow at the same rate\\
-    0 & then \(f(x)\) grows slower than \(g(x)\)
-  \end{dcases*}
-\]
+\begin{rmbskip}
+  \[
+    \lim_{x \to \infty} \frac{f(x)}{g(x)} =
+    \begin{dcases*}
+      \infty & then \(f(x)\) grows faster than \(g\)\\
+      \left<0, \infty\right> & then \(f(x)\) and \(g(x)\) grow at the same
+        rate\\
+      0 & then \(f(x)\) grows slower than \(g(x)\)
+    \end{dcases*}
+  \]
+\end{rmbskip}
 \section*{Improper Integrals}
 \subsection*{Type 1}
-{\rmskip\begin{align*}
-  \int_a^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_a^n f(x) \D{x}\\
-  \int_{-\infty}^b f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^b f(x) \D{x}\\
-  \int_{-\infty}^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^n f(x) \D{x}
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    \int_a^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_a^n f(x) \D{x}\\
+    \int_{-\infty}^b f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^b f(x) \D{x}\\
+    \int_{-\infty}^\infty f(x) \D{x} &= \lim_{n \to \infty} \int_{-n}^n f(x)
+      \D{x}
+  \end{align*}
+\end{rmskip}
 \subsection*{Type 2}
 \[
   \int_a^b f(x)
@@ -378,10 +435,12 @@ An integral that fits the pattern:
 \[
   \int_1^\infty \frac{1}{x^p} \D{x} \text{ where \(p\) is positive}
 \]
-{\rmaskip\begin{align*}
-  p > 1 &\implies \text{the integral converges to \(\tfrac{1}{p-1}\).}\\
-  0 < p \le 1 &\implies \text{the integral diverges.}
-\end{align*}}%
+\begin{rmaskip}
+  \begin{align*}
+    p > 1 &\implies \text{the integral converges to \(\tfrac{1}{p-1}\).}\\
+    0 < p \le 1 &\implies \text{the integral diverges.}
+  \end{align*}
+\end{rmaskip}
 \section*{Comparison Tests}
 For type 1 improper integrals (\(a = \infty\) and\slash or \(b = \infty\))
 where the integrand is not easily antidifferentiable:
@@ -392,12 +451,14 @@ Establish bound functions which can be antidifferentiated:
 \[
   l(x) \le f(x) \le u(x)
 \]
-{\rmskip\begin{alignat*}{3}
-  \text{Convergence if } &\int_a^b f(x) \D{x} \le \int_a^b u(x) \D{x}
-    &&\text{ and } \int_a^b u(x) \D{x} \text{ converges}\\
-  \text{Divergence if } &\int_a^b f(x) \D{x} \ge \int_a^b l(x) \D{x}
-    &&\text{ and } \int_a^b l(x) \D{x} \text{ diverges}
-\end{alignat*}}%
+\begin{rmskip}
+  \begin{alignat*}{3}
+    \text{Convergence if } &\int_a^b f(x) \D{x} \le \int_a^b u(x) \D{x}
+      &&\text{ and } \int_a^b u(x) \D{x} \text{ converges}\\
+    \text{Divergence if } &\int_a^b f(x) \D{x} \ge \int_a^b l(x) \D{x}
+      &&\text{ and } \int_a^b l(x) \D{x} \text{ diverges}
+  \end{alignat*}
+\end{rmskip}
 \section*{Sequences}
 \subsection*{Explicit Definition}
 \[
@@ -410,15 +471,19 @@ where \(k \in \{1,2,3,\dots\}\).
 \]
 where \(x_1\) is defined and \(k \in \{2,3,4,\dots\}\).
 \subsection*{Arithmetic}
-{\rmskip\begin{align*}
-  x_k &= d(k-1) + x_1\\
-  x_k &= t_{k-1} + d
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    x_k &= d(k-1) + x_1\\
+    x_k &= t_{k-1} + d
+  \end{align*}
+\end{rmskip}
 \subsection*{Geometric}
-{\rmskip\begin{align*}
-  x_k &= x_1r^{k-1}\\
-  x_k &= x_{k-1} r
-\end{align*}}%
+\begin{rmskip}
+  \begin{align*}
+    x_k &= x_1r^{k-1}\\
+    x_k &= x_{k-1} r
+  \end{align*}
+\end{rmskip}
 \subsection*{Convergence\slash Divergence}
 A sequence converges if the limit \(\displaystyle\lim_{n \to \infty} x_n\) is
 a finite number else it diverges.
@@ -436,7 +501,7 @@ If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
 \[
   \isum c_k{(x-a)}^k
 \]
-\subsection*{Taylor/Maclaurin Series}
+\subsection*{Taylor\slash Maclaurin Series}
 Given an infinitely differentiable function \(f(x)\), the Taylor series
 centered around \(a\) is equal to the power series with a specific \(c_k\):
 \[
@@ -451,15 +516,17 @@ equal to the Taylor series evaluated with upper limit \(n\):
   P_n(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!}{(x-a)}^k
 \]
 \subsection*{Common Maclaurin Series}
-{\rmskip\begin{alignat*}{3}
-  \frac{a}{1-x} &= \isum ax^k &&\quad x \in \left<-1,1\right>\\
-  e^x &= \isum \frac{x^k}{k!} &&\quad x \in \R\\
-  \sin(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
-  \cos(x) &= \isum {(-1)}^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
-  \itan(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
-  \ln(x+1) &= \sum_{k=1}^\infty {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
-    \left<-1,1\right]
-\end{alignat*}}%
+\begin{rmskip}
+  \begin{alignat*}{3}
+    \frac{a}{1-x} &= \isum ax^k &&\quad x \in \left<-1,1\right>\\
+    e^x &= \isum \frac{x^k}{k!} &&\quad x \in \R\\
+    \sin(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{(2k+1)!} &&\quad x \in \R\\
+    \cos(x) &= \isum {(-1)}^k \frac{x^{2k}}{(2k)!} &&\quad x \in \R\\
+    \atan(x) &= \isum {(-1)}^k \frac{x^{2k+1}}{2k+1} &&\quad x \in [-1,1]\\
+    \ln(x+1) &= \sum_{k=1}^\infty {(-1)}^{k+1} \frac{x^k}{k} &&\quad x \in
+      \left<-1,1\right]
+  \end{alignat*}
+\end{rmskip}
 \subsection*{Calculating Error for a Taylor Polynomial}
 \[
   P_\infty(x) = P_n(x) + R_n(x)
