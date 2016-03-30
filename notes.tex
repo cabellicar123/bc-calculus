@@ -9,8 +9,9 @@
 \usepackage{parskip}
 \usepackage[compact]{titlesec}
 \usepackage{tikz}
-
 \usetikzlibrary{matrix}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
 
 \setlength{\parindent}{0pt}
 \setlength{\mathindent}{0pt}
@@ -19,6 +20,7 @@
 
 \let\oldimplies\implies%
 \renewcommand*{\implies}{\Rightarrow}
+\newcommand*{\fixmath}{\makebox{}\vspace{\glueexpr-\baselineskip-\abovedisplayskip}}
 \newcommand*{\R}{\mathbb{R}}
 \newcommand*{\asin}{\sin^{-1}}
 \newcommand*{\acos}{\cos^{-1}}
@@ -42,12 +44,12 @@
 }
 \makeatother
 
-\newenvironment{rmaskip}{\setlength{\abovedisplayskip}{0pt}\ignorespaces}%
-  {\ignorespacesafterend}
+\newenvironment{rmaskip}{\setlength{\abovedisplayskip}{0pt}\fixmath%
+  \ignorespaces}{\ignorespacesafterend}
 \newenvironment{rmbskip}{\setlength{\belowdisplayskip}{0pt}\ignorespaces}%
   {\ignorespacesafterend}
 \newenvironment{rmskip}{\setlength{\abovedisplayskip}{0pt}%
-  \setlength{\belowdisplayskip}{0pt}\ignorespaces}%
+  \setlength{\belowdisplayskip}{0pt}\fixmath\ignorespaces}%
   {\ignorespacesafterend}
 
 \begin{document}
@@ -64,11 +66,13 @@
   \end{align*}
 \end{rmskip}
 \section*{Limits}
-\[
-  \lim_{x \to n} f(x) = L
-\]
+\begin{rmaskip}
+  \[
+    \lim_{x \to n} f(x) = L
+  \]
+\end{rmaskip}
 Means for any number \(\epsilon > 0\) there exists a number \(\delta > 0\) such
-that if \(0 < |x - n| < \delta\) then \(|f(x) - L| < \epsilon\).
+that if \(0 < \abs*{x-n} < \delta\) then \(\abs*{f(x)-L} < \epsilon\).
 \[
   \lim_{x \to a}f(g(x)) = f\left(\lim_{x \to a}g(x)\right) \text{ if } f(g(x))
   \text{ is continuous at } x
@@ -105,7 +109,7 @@ Symmetric difference quotient:
     \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
     \dd{}{x}\left(\frac{f(x)}{g(x)}\right) &= \frac{f'(x)g(x) - f(x)g'(x)}
       {{g(x)}^2}\\
-    \dd{}{x}|f(x)| &= \frac{|f(x)|}{f(x)} \cdot f'(x)\\
+    \dd{}{x}\abs*{f(x)} &= \frac{\abs*{f(x)}}{f(x)} \cdot f'(x)\\
     \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
     \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
   \end{align*}
@@ -138,9 +142,11 @@ If \(f(x)\) is continuous on \([a,b]\), then there exists one value \(c\) on
   \]
 \end{rmbskip}
 \section*{Reimann Sums}
-\[
-  \sum_{k=1}^n f(x_k) \Delta x\\
-\]
+\begin{rmaskip}
+  \[
+    \sum_{k=1}^n f(x_k) \Delta x\\
+  \]
+\end{rmaskip}
 Assuming regular partition:
 \begin{rmbskip}
   \begin{align*}
@@ -189,9 +195,11 @@ The linearization of \(f(x)\) at \(a\):
 \end{rmbskip}
 \section*{Fundamental Theorem of Calculus}
 \subsection*{Part 1}
-\[
-  \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
-\]
+\begin{rmskip}
+  \[
+    \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
+  \]
+\end{rmskip}
 \subsection*{Part 2}
 \begin{rmskip}
   \begin{align*}
@@ -221,7 +229,7 @@ include any discontinuities.
 Start at \((x_0,y_0)\)
 \begin{rmbskip}
   \begin{align*}
-    \Delta y &= \Delta x \cdot \dd{y}{x} \biggr|_{(x_{n-1},y_{n-1})}\\
+    \Delta y &= \Delta x \cdot \dd{y}{x} \bigg|_{(x_{n-1},y_{n-1})}\\
     (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
   \end{align*}
 \end{rmbskip}
@@ -231,7 +239,7 @@ Start at \((x_0,y_0)\)
     \int cf(x) \D{x} &= c \int f(x) \D{x}\\
     \int f(x) \pm g(x) \D{x} &= \int f(x) \D{x} \pm \int g(x) \D{x}\\
     \int x^n \D{x} &= \frac{x^{n+1}}{n+1} + C\\
-    \int \frac{1}{x} \D{x} &= \ln|x| + C\\
+    \int \frac{1}{x} \D{x} &= \ln\abs*{x} + C\\
     \int b^x \D{x} &= \frac{b^x}{\ln b} + C\\
     \int \ln x \D{x} &= x\ln x - x + C
   \end{align*}
@@ -241,8 +249,8 @@ Start at \((x_0,y_0)\)
   \begin{align*}
     \int \sin(x) \D{x} &= -\cos(x) + C\\
     \int \cos(x) \D{x} &= \sin(x) + C\\
-    \int \tan(x) \D{x} &= -\ln|\cos(x)| + C\\
-    \int \sec(x) \D{x} &= \ln|\sec(x)+\tan(x)| + C\\
+    \int \tan(x) \D{x} &= -\ln\abs*{\cos(x)} + C\\
+    \int \sec(x) \D{x} &= \ln\abs*{\sec(x)+\tan(x)} + C\\
     \int \sin^2(x) \D{x} &= \frac{1}{2} (x - \sin(x)\cos(x)) + C\\
     \int \cos^2(x) \D{x} &= \frac{1}{2} (x + \sin(x)\cos(x)) + C\\
     \int \tan^2(x) \D{x} &= \tan(x) - x + C\\
@@ -265,9 +273,11 @@ antidifferentiable, set \(u = g(x)\). Then solve for \(du\) and replace \(dx\)
 so that the equation \(A\int f(u) \D{u}\) results (where \(A\) is the necessary
 ``fudge factor''). Antidifferentiate and replace \(u\) with \(g(x)\).
 \section*{Integration by Parts}
-\[
-  \int u \D{v} = uv - \int v \D{u} + C
-\]
+\begin{rmaskip}
+  \[
+    \int u \D{v} = uv - \int v \D{u} + C
+  \]
+\end{rmaskip}
 
 or
 
@@ -317,15 +327,17 @@ for \(A\) and \(B\) respectively.
   \end{align*}
 \end{rmskip}
 \subsection*{Half-life}
-\begin{rmbskip}
+\begin{rmskip}
   \[
     k = -\frac{\ln(2)}{p}
   \]
-\end{rmbskip}
+\end{rmskip}
 \section*{Logistic Differential Equation}
-\[
-  \dd{P}{t} = kP(m - P) = kPm\left(1-\frac{P}{m}\right)
-\]
+\begin{rmaskip}
+  \[
+    \dd{P}{t} = kP(m - P) = kPm\left(1-\frac{P}{m}\right)
+  \]
+\end{rmaskip}
 where \(P\) is the population and \(M\) is the carrying capacity
 \[
   P(t) = \frac{m}{1 + Ae^{-mkt}}
@@ -333,9 +345,11 @@ where \(P\) is the population and \(M\) is the carrying capacity
 The maximum carrying capacity is reached when \(P(t) = m - 0.5\), if \(P(0) <
 m\), or right after \(P(t) = m + 0.5\), if \(P(0) > m\).
 \section*{Calculating Area of Regions Bounded by Two Functions}
-\[
-  A = \int_a^b f(x) - g(x) \D{x}
-\]
+\begin{rmaskip}
+  \[
+    A = \int_a^b f(x) - g(x) \D{x}
+  \]
+\end{rmaskip}
 where \(f(x)\) is the upper function and \(g(x)\) is the lower function.
 
 If the functions cross, multiple integrals must be taken with the appropriate
@@ -353,15 +367,19 @@ upper and lower functions.
 \end{tabular}}
 \section*{Calculating Volume Using the Disk\slash Washer Method for Solids of
 Rotation}
-\[
-  V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{t}
-\]
+\begin{rmaskip}
+  \[
+    V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{t}
+  \]
+\end{rmaskip}
 where \(\D{t}\) is the differential thickness of the disk\slash washer.
 \section*{Calculating Volume Using the Cylindrical Shell Method for Solids of
 Rotation}
-\[
-  V = 2\pi \int_a^b hr \D{t}
-\]
+\begin{rmaskip}
+  \[
+    V = 2\pi \int_a^b hr \D{t}
+  \]
+\end{rmaskip}
 where \(\D{t}\) is the differential thickness of the shell.
 \section*{Calculating Arc Lengh}
 \begin{rmbskip}
@@ -417,9 +435,11 @@ To compare rates of \(f(x)\) and \(g(x)\) evaluate
   \end{align*}
 \end{rmskip}
 \subsection*{Type 2}
-\[
-  \int_a^b f(x)
-\]
+\begin{rmaskip}
+  \[
+    \int_a^b f(x)
+  \]
+\end{rmaskip}
 such that there is at least one vertical-asymptotic discontinuity on \([a,b]\).
 \begin{alignat*}{3}
   &\int_a^b f(x) \D{x} \text{ (where discontinuity at \(a\)) }
@@ -461,14 +481,18 @@ Establish bound functions which can be antidifferentiated:
 \end{rmskip}
 \section*{Sequences}
 \subsection*{Explicit Definition}
-\[
-  x_k = f(k)
-\]
+\begin{rmaskip}
+  \[
+    x_k = f(k)
+  \]
+\end{rmaskip}
 where \(k \in \{1,2,3,\dots\}\).
 \subsection*{Recursive Definition}
-\[
-  x_k = m(x_{k-1})
-\]
+\begin{rmaskip}
+  \[
+    x_k = m(x_{k-1})
+  \]
+\end{rmaskip}
 where \(x_1\) is defined and \(k \in \{2,3,4,\dots\}\).
 \subsection*{Arithmetic}
 \begin{rmskip}
@@ -488,9 +512,11 @@ where \(x_1\) is defined and \(k \in \{2,3,4,\dots\}\).
 A sequence converges if the limit \(\displaystyle\lim_{n \to \infty} x_n\) is
 a finite number else it diverges.
 \section*{Infinite Series}
-\[
-  \isum x_k
-\]
+\begin{rmskip}
+  \[
+    \isum x_k
+  \]
+\end{rmskip}
 \subsection*{Convergence}
 Consider the sequence of ``partial sums'' (\(s\)) where:
 \[
@@ -498,9 +524,11 @@ Consider the sequence of ``partial sums'' (\(s\)) where:
 \]
 If \(\{s_n\}\) converges to \(S\) then the infinite series converges to \(S\).
 \subsection*{Power Series}
-\[
-  \isum c_k{(x-a)}^k
-\]
+\begin{rmskip}
+  \[
+    \isum c_k{(x-a)}^k
+  \]
+\end{rmskip}
 \subsection*{Taylor\slash Maclaurin Series}
 Given an infinitely differentiable function \(f(x)\), the Taylor series
 centered around \(a\) is equal to the power series with a specific \(c_k\):
@@ -528,12 +556,30 @@ equal to the Taylor series evaluated with upper limit \(n\):
   \end{alignat*}
 \end{rmskip}
 \subsection*{Calculating Error for a Taylor Polynomial}
-\[
-  P_\infty(x) = P_n(x) + R_n(x)
-\]
+\begin{rmaskip}
+  \[
+    P_\infty(x) = P_n(x) + R_n(x)
+  \]
+\end{rmaskip}
 where \(P_\infty\) is the entire infinite Taylor series and \(R_n\) is the
-remainder.
+remainder (note that the remainder series starts with \(k=n+1\)).
+\begin{align*}
+  R_n(x) &= \frac{f^{(n+1)}(c)}{(n+1)!}{(x-a)}^{n+1}\\
+  \abs*{R_n(x)} &= \abs*{\frac{f^{(n+1)}(c)}{(n+1)!}{(x-a)}^{n+1}}\\
+  \abs*{R_n(x)} &= \frac{\abs*{f^{(n+1)}(c)}}{(n+1)!}\abs*{x-a}^{n+1}
+\end{align*}
+For an unknown \(c \in [0,x]\).
+
+To bound the error:
 \[
-  |P_n(x) - f(x)| = \text{magnitude of error}
+  \abs*{R_n(x)} \le \frac{M}{(n+1)!}\abs*{x-a}^{n+1}
 \]
+Where \(M\) is a positive number greater than or equal to every possible value
+\(f^{(n+1)}(t)\) where \(t\) is in the interval of study.
+
+The series then converges if:
+\[
+  \lim_{n \to \infty} \abs*{R_n(x)} = 0
+\]
+\subsection*{}
 \end{document}
