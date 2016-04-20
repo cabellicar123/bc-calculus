@@ -6,6 +6,7 @@
 \usepackage[fleqn]{mathtools}
 \usepackage{amssymb}
 \usepackage[margin=1.0in]{geometry}
+\usepackage{xparse}
 \usepackage{parskip}
 \usepackage[compact]{titlesec}
 \usepackage{tikz}
@@ -25,7 +26,8 @@
 \newcommand*{\asin}{\sin^{-1}}
 \newcommand*{\acos}{\cos^{-1}}
 \newcommand*{\atan}{\tan^{-1}}
-\newcommand*{\dd}[3][]{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}
+\DeclareDocumentCommand{\dd}{O{}om}{\IfNoValueTF{#2}{\tfrac{\mathrm{d}#1}%
+  {\mathrm{d}#3}}{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
 \newcommand*{\D}[1]{\mathop{}\!\mathrm{d}#1}
 \newcommand*{\isum}[1]{\sum\limits_{#1}^\infty}
 \makeatletter
@@ -103,36 +105,36 @@ Symmetric difference quotient:
 \section*{Differentiation Rules}
 \begin{fixskip}
   \begin{align*}
-    \dd{}{x}c f(x) &= c f'(x)\\
-    \dd{}{x}f(g(x)) &= f'(g(x))g'(x)\\
-    \dd{}{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
-    \dd{}{x}{f(x)}^n &= n{f(x)}^{n-1} \cdot f'(x)\\
-    \dd{}{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
-    \dd{}{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
-    \dd{}{x}\paren*{\frac{f(x)}{g(x)}} &= \frac{f'(x)g(x) - f(x)g'(x)}
+    \dd{x}c f(x) &= c f'(x)\\
+    \dd{x}f(g(x)) &= f'(g(x))g'(x)\\
+    \dd{x}(f(x) \pm g(x)) &= f'(x) \pm g'(x)\\
+    \dd{x}{f(x)}^n &= n{f(x)}^{n-1} \cdot f'(x)\\
+    \dd{x}\sqrt{f(x)} &= \frac{f'(x)}{2\sqrt{f(x)}}\\
+    \dd{x}(f(x)g(x)) &= f'(x)g(x) + f(x)g'(x)\\
+    \dd{x}\paren*{\frac{f(x)}{g(x)}} &= \frac{f'(x)g(x) - f(x)g'(x)}
       {{g(x)}^2}\\
-    \dd{}{x}\abs*{f(x)} &= \frac{\abs*{f(x)}}{f(x)} \cdot f'(x)\\
-    \dd{}{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
-    \dd{}{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
+    \dd{x}\abs*{f(x)} &= \frac{\abs*{f(x)}}{f(x)} \cdot f'(x)\\
+    \dd{x}b^{f(x)} &= b^{f(x)} \ln b \cdot f'(x)\\
+    \dd{x}\log_b(f(x)) &= \frac{f'(x)}{f(x) \ln b}
   \end{align*}
 \end{fixskip}
 \section*{Trigonometric Differentiation Rules}
 \begin{fixskip}
   \begin{align*}
-    \dd{}{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
-    \dd{}{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
-    \dd{}{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
-    \dd{}{x}\sec(f(x)) &= \sec(f(x))\tan(f(x)) \cdot f'(x)\\
-    \dd{}{x}\csc(f(x)) &= -\csc(f(x))\cot(f(x)) \cdot f'(x)\\
-    \dd{}{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
+    \dd{x}\sin(f(x)) &= \cos(f(x)) \cdot f'(x)\\
+    \dd{x}\cos(f(x)) &= -\sin(f(x)) \cdot f'(x)\\
+    \dd{x}\tan(f(x)) &= \sec^2(f(x)) \cdot f'(x)\\
+    \dd{x}\sec(f(x)) &= \sec(f(x))\tan(f(x)) \cdot f'(x)\\
+    \dd{x}\csc(f(x)) &= -\csc(f(x))\cot(f(x)) \cdot f'(x)\\
+    \dd{x}\cot(f(x)) &= -\csc^2(f(x)) \cdot f'(x)
   \end{align*}
 \end{fixskip}
 \section*{Inverse Trigonometric Differentiation Rules}
 \begin{fixskip}
   \begin{align*}
-    \dd{}{x}\asin(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-    \dd{}{x}\acos(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
-    \dd{}{x}\atan(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
+    \dd{x}\asin(f(x)) &= \frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+    \dd{x}\acos(f(x)) &= -\frac{f'(x)}{\sqrt{1 - {f(x)}^2}}\\
+    \dd{x}\atan(f(x)) &= \frac{f'(x)}{1 + {f(x)}^2}
   \end{align*}
 \end{fixskip}
 \section*{Mean Value Theorem}
@@ -199,7 +201,7 @@ The linearization of \(f(x)\) at \(a\):
 \subsection*{Part 1}
 \begin{fixskip}
   \[
-    \dd{}{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
+    \dd{x} \int_{a(x)}^{b(x)} f(t) \D{t} = f(b(x)) b'(x) - f(a(x)) a'(x)
   \]
 \end{fixskip}
 \subsection*{Part 2}
@@ -212,7 +214,7 @@ The linearization of \(f(x)\) at \(a\):
 \section*{Solving Differential Equations Using A Definite Integral}
 \begin{fixaskip}
   \begin{align*}
-    \dd{y}{x} &= f(x)\\
+    \dd[y]{x} &= f(x)\\
     y &= \int_a^x f(t) \D{t} + C
   \end{align*}
 \end{fixaskip}
@@ -221,7 +223,7 @@ the given \(y\) value.
 \section*{Solving Differential Equations Using Antidifferentiation}
 \begin{fixaskip}
   \begin{align*}
-    \dd{y}{x} &= f(x)\\
+    \dd[y]{x} &= f(x)\\
     y &= \int f(x) + C \text{ (general form)}
   \end{align*}
 \end{fixaskip}
@@ -231,7 +233,7 @@ include any discontinuities.
 Start at \((x_0,y_0)\)
 \begin{fixbskip}
   \begin{align*}
-    \Delta y &= \Delta x \cdot \dd{y}{x} \bigg|_{(x_{n-1},y_{n-1})}\\
+    \Delta y &= \Delta x \cdot \dd[y]{x} \bigg|_{(x_{n-1},y_{n-1})}\\
     (x_n.y_n) &= (x_{n-1} + \Delta x, y_{n-1} + \Delta y)
   \end{align*}
 \end{fixbskip}
@@ -290,10 +292,10 @@ or
     column 2/.style={anchor=base east},
     column 3/.style={anchor=base west}]{
     \(+\) & |(d0)| \(u\) &[1em] \(\D{v}\)\\
-    \(-\) & |(d1)| \(\dd{u}{x}\) & |(i1)| \(\int \D{v} \D{x}\)\\
-    \(+\) & |(d2)| \(\dd[2]{u}{x}\) &
+    \(-\) & |(d1)| \(\dd[u]{x}\) & |(i1)| \(\int \D{v} \D{x}\)\\
+    \(+\) & |(d2)| \(\dd[2][u]{x}\) &
       |(i2)| \(\int(\int\D{v}\D{x})\D{x}\)\\
-    \(-\) & |(d3)| \(\dd[3]{u}{x}\) &
+    \(-\) & |(d3)| \(\dd[3][u]{x}\) &
       |(i3)| \(\int(\int\paren*{\int\D{v}\D{x}}\D{x})\D{x}\)\\
     \(+\) & |(d4)| \(\cdots\) & |(i4)| \(\cdots\)\\
           & 0 & |(i5)| \(\cdots\)\\
@@ -305,8 +307,8 @@ or
 \begin{fixbskip}
   \[
     \int u \D{v} = \paren*{u \cdot \int \D{v} \D{x}}
-      - \paren*{\dd{u}{x} \cdot \int \paren*{ \int \D{v} \D{x}} \D{x}}
-      + \paren*{\dd[2]{u}{x} \cdot \int \paren*{\int \paren*{\int \D{v} \D{x}}
+      - \paren*{\dd[u]{x} \cdot \int \paren*{ \int \D{v} \D{x}} \D{x}}
+      + \paren*{\dd[2][u]{x} \cdot \int \paren*{\int \paren*{\int \D{v} \D{x}}
         \D{x}} \D{x}} - \cdots
   \]
 \end{fixbskip}
@@ -323,7 +325,7 @@ for \(A\) and \(B\) respectively.
 \section*{Exponential Growth\slash Decay}
 \begin{fixskip}
   \begin{align*}
-    \dd{Q}{t} &= kQ\\
+    \dd[Q]{t} &= kQ\\
     Q &= Q_0 e^{kt} = Q_0 b^{\frac{t}{p}}\\
     k &= -\frac{\ln(b)}{p}
   \end{align*}
@@ -337,7 +339,7 @@ for \(A\) and \(B\) respectively.
 \section*{Logistic Differential Equation}
 \begin{fixaskip}
   \[
-    \dd{P}{t} = kP(m - P) = kPm\paren*{1-\frac{P}{m}}
+    \dd[P]{t} = kP(m - P) = kPm\paren*{1-\frac{P}{m}}
   \]
 \end{fixaskip}
 where \(P\) is the population and \(M\) is the carrying capacity
@@ -386,8 +388,8 @@ where \(\D{t}\) is the differential thickness of the shell.
 \section*{Calculating Arc Lengh}
 \begin{fixbskip}
   \[
-    l = \int_a^b \sqrt{1+{\paren*{\dd{y}{x}}}^2} \D{x}
-    = \int_c^d \sqrt{1+{\paren*{\dd{x}{y}}}^2} \D{y}
+    l = \int_a^b \sqrt{1+{\paren*{\dd[y]{x}}}^2} \D{x}
+    = \int_c^d \sqrt{1+{\paren*{\dd[x]{y}}}^2} \D{y}
   \]
 \end{fixbskip}
 \section*{L'H\^{o}pitals Rule}
@@ -654,5 +656,26 @@ Then to find radius of convergence:
 Find positive, continuous, and decreasing function where \(f(n) = a_n\). If
 \(\int\limits_0^\infty f(x) \D{x}\) converges the series will converge; if it
 diverges the series will diverge.
-\section*{}
+\section*{Parametric Functions}
+Both \(x\) and \(y\) defined in terms of third variable:
+\begin{align*}
+  x &= f(t)\\
+  y &= g(t)
+\end{align*}
+\subsection*{Eliminating the Parameter}
+Solve the for \(t\) in one of the equaitons and substitute or find another way
+to combine the two equations to eliminate \(t\);
+\subsection*{Taking Derivatives}
+\begin{fixaskip}
+  \begin{align*}
+    \dd[y]{x} &= \frac{\dd[y]{t}}{\dd[x]{t}}\\
+    \dd[2][y]{x} &= \frac{\dd{t}\paren*{\dd[y]{x}}}{\dd[x]{t}}
+  \end{align*}
+\end{fixaskip}
+\subsection*{Calculating Arc Length}
+\begin{fixskip}
+  \[
+    \int_{t_1}^{t_2}\sqrt{\paren*{\dd[x]{t}}^2 + \paren*{\dd[y]{t}}^2}\D{t}
+  \]
+\end{fixskip}
 \end{document}
