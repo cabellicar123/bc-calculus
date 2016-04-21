@@ -678,4 +678,26 @@ to combine the two equations to eliminate \(t\);
     \int_{t_1}^{t_2}\sqrt{\paren*{\dd[x]{t}}^2 + \paren*{\dd[y]{t}}^2}\D{t}
   \]
 \end{fixskip}
+\section*{Polar Functions}
+Points are identified by radius \(r\) and angle \(\theta\): \((r,\theta)\).
+There exist infinitely many polar representations for the same point.
+
+Equations are usually \(r\) in terms of \(\theta\): \(r = f(\theta)\).
+\subsection*{Relationships With Cartesian Points}
+\begin{fixskip}
+  \begin{align*}
+    r &= \sqrt{x^2+y^2}\\
+    x &= r\cos(\theta)\\
+    y &= r\sin(\theta)
+  \end{align*}
+\end{fixskip}
+\subsection*{Calculating Instantaneous Slope}
+\begin{fixskip}
+  \[
+    \dd[y]{x} = \frac{\dd[y]{\theta}}{\dd[x]{\theta}}
+    = \frac{\dd{\theta}(r\sin(\theta))}{\dd{\theta}(r\cos(\theta))}
+    = \frac{\dd[r]{\theta}\sin(\theta) + r\cos(\theta)}%
+      {\dd[r]{\theta}\cos(\theta) + r\sin(\theta)}
+  \]
+\end{fixskip}
 \end{document}
