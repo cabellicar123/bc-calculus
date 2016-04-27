@@ -30,6 +30,7 @@
   {\mathrm{d}#3}}{\tfrac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
 \newcommand*{\D}[1]{\mathop{}\!\mathrm{d}#1}
 \newcommand*{\isum}[1]{\sum\limits_{#1}^\infty}
+\newcommand{\pvec}[1]{\vec{#1}\mkern2mu\vphantom{#1}}
 \makeatletter
 \newcommand{\mquote}[1]{{\mathpalette\mqu@te{#1}}}
 \newcommand{\mqu@te}[2]{%
@@ -156,7 +157,7 @@ Assuming regular partition:
   \begin{align*}
     \text{LRAM} &= \sum_{k=1}^n f\paren*{a + \frac{(k-1)(b - a)}{n}}
       \frac{b-a}{n}\\
-    \text{MRAM} &= \sum_{k=1}^n f\paren*{a + \frac{(k-0.5)(b - a)}{n}}
+    \text{MRAM} &= \sum_{k=1}^n f\paren*{a + \frac{(k-\frac{1}{2})(b - a)}{n}}
       \frac{b-a}{n}\\
     \text{RRAM} &= \sum_{k=1}^n f\paren*{a + \frac{k(b - a)}{n}}
       \frac{b-a}{n}
@@ -697,7 +698,24 @@ Equations are usually \(r\) in terms of \(\theta\): \(r = f(\theta)\).
     \dd[y]{x} = \frac{\dd[y]{\theta}}{\dd[x]{\theta}}
     = \frac{\dd{\theta}(r\sin(\theta))}{\dd{\theta}(r\cos(\theta))}
     = \frac{\dd[r]{\theta}\sin(\theta) + r\cos(\theta)}%
-      {\dd[r]{\theta}\cos(\theta) + r\sin(\theta)}
+      {\dd[r]{\theta}\cos(\theta) - r\sin(\theta)}
   \]
 \end{fixskip}
+\subsection*{Calculating Area Bounded by Curve}
+\begin{fixskip}
+  \[
+    \frac{1}{2} \int_\alpha^\beta {(r(\theta))}^2 \D{\theta}
+  \]
+\end{fixskip}
+\section*{Vector Functions}
+\begin{fixaskip}
+  \begin{gather*}
+    \vec{s}(t) = \left<f(t),g(t)\right>\\
+    \pvec{s}'(t) = \vec{v}(t) = \left<f'(t),g'(t)\right>\\
+    \pvec{s}''(t) = \pvec{v}'(t) = \vec{a}(t) = \left<f''(t),g''(t)\right>
+  \end{gather*}
+\end{fixaskip}
+\[
+  \text{speed} = \abs{\vec{v}} = \sqrt{{(f'(t))}^2 + {(g'(t))}^2}
+\]
 \end{document}
