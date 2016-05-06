@@ -209,7 +209,7 @@ The linearization of \(f(x)\) at \(a\):
 \begin{fixskip}
   \begin{align*}
     F'(x) &= f(x)\\
-    \int_a^b f(x) &= F(x) \bigg|_a^b = F(b) - F(a)
+    \int_a^b f(x) \D{x} &= F(x) \bigg|_a^b = F(b) - F(a)
   \end{align*}
 \end{fixskip}
 \section*{Solving Differential Equations Using A Definite Integral}
@@ -225,7 +225,7 @@ the given \(y\) value.
 \begin{fixaskip}
   \begin{align*}
     \dd[y]{x} &= f(x)\\
-    y &= \int f(x) + C \text{ (general form)}
+    y &= \int f(x) \D{x} + C \text{ (general form)}
   \end{align*}
 \end{fixaskip}
 Specify largest domain of \(x\) that includes specified \(x\) and does not
@@ -374,18 +374,18 @@ upper and lower functions.
 Rotation}
 \begin{fixaskip}
   \[
-    V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{t}
+    V = \pi\int_a^b r_{\text{outer}}^2 - r_{\text{inner}}^2 \D{x}
   \]
 \end{fixaskip}
-where \(\D{t}\) is the differential thickness of the disk\slash washer.
+where \(\D{x}\) is the differential thickness of the disk\slash washer.
 \section*{Calculating Volume Using the Cylindrical Shell Method for Solids of
 Rotation}
 \begin{fixaskip}
   \[
-    V = 2\pi \int_a^b hr \D{t}
+    V = 2\pi \int_a^b hr \D{x}
   \]
 \end{fixaskip}
-where \(\D{t}\) is the differential thickness of the shell.
+where \(\D{x}\) is the differential thickness of the shell.
 \section*{Calculating Arc Lengh}
 \begin{fixbskip}
   \[
